@@ -12,13 +12,14 @@
 
 #include "../include/MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void) : _learnedCount(0)
+MateriaSource::MateriaSource(void)
 {
-	for (int i = 0; i < 4; ++i)
+	for (int i = 0; i < 4; i++)
 	{
-		_learnedMaterias[i] = NULL;
+		this->_learnedMaterias[i] = NULL;
 	}
 	std::cout << "MateriaSource constructor" << std::endl;
+	return ;
 }
 
 MateriaSource::MateriaSource(MateriaSource const &m)
@@ -26,17 +27,15 @@ MateriaSource::MateriaSource(MateriaSource const &m)
 	for (int i = 0; i < 4; ++i)
 	{
 		if (m._learnedMaterias[i])
-		{
-			_learnedMaterias[i] = m._learnedMaterias[i]->clone();
-			return ;
-		}
+			this->_learnedMaterias[i] = m._learnedMaterias[i]->clone();
 	}
 	std::cout << "MateriaSource copy constructor" << std::endl;
+	return ;
 }
 
 MateriaSource::~MateriaSource(void)
 {
-	for (int i = 0; i < 4; ++i)
+	for (size_t i = 0; i < 4; i++)
 	{
 		if (_learnedMaterias[i])
 		{
@@ -49,15 +48,18 @@ MateriaSource::~MateriaSource(void)
 
 MateriaSource& MateriaSource::operator=(MateriaSource const &m)
 {
-	for (int i = 0; i < 4; ++i)
+	if (this != &m)
 	{
-		if (_learnedMaterias[i])
+		for (size_t i = 0; i < 4; i++)
 		{
-			delete _learnedMaterias[i];
-			_learnedMaterias[i] = NULL;
+			if (this->_learnedMaterias[i])
+			{
+				delete this->_learnedMaterias[i];
+				this->_learnedMaterias[i] = NULL;
+			}
+			if (m._learnedMaterias[i])
+				this->_learnedMaterias[i] =  m._learnedMaterias[i]->clone();			
 		}
-		if (m._learnedMaterias[i])
-			_learnedMaterias[i] =  m._learnedMaterias[i]->clone();			
 	}
 	std::cout << "MateriaSource assignment operator" << std::endl;
 	return (*this);
@@ -65,23 +67,33 @@ MateriaSource& MateriaSource::operator=(MateriaSource const &m)
 
 void	MateriaSource::learnMateria(AMateria* m)
 {
-	if (_learnedCount < 4)
+	for (size_t i = 0; i < 4; ++i)
 	{
-		_learnedMaterias[_learnedCount++] = m->clone();
-		std::cout << "Learned Materia of type " << m->getType() << std::endl;
+		if (!_learnedMaterias[i])
+		{
+			_learnedMaterias[i] = m;
+			std::cout << "Learned Materia of type " << m->getType() << std::endl;
+			return ;
+		}
 	}
+	std::cout << "Can't learn more than 4 Materia" << std::endl;
 }
+
 
 AMateria*	MateriaSource::createMateria(std::string const &type)
 {
-	for (int i = 0; i < 4; ++i)
+	int i;
+
+	i = 0;
+	while (i < 4 && _learnedMaterias[i])
 	{
-		if (_learnedMaterias[i] && _learnedMaterias[i]->getType() == type)
+		if (_learnedMaterias[i]->getType() == type)
 		{
-			std::cout << "Created Materia of type " << type << std::endl;
-			return (_learnedMaterias[i]->clone());
+			std::cout << "Created Materia of type " << _learnedMaterias[i]->getType() << std::endl;
+			return (this->_learnedMaterias[i]->clone());
 		}
+		i++;
 	}
-	std::cout << "Type " << type << " not found. Unable to create Materia" << std::endl;
-	return (NULL);
+	std::cout << "Type " << type << " not found. Unable to create materia" << std::endl;
+	return (0);
 }

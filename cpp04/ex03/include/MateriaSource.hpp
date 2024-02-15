@@ -20,7 +20,6 @@ class	MateriaSource : public IMateriaSource
 {
 private:
 	AMateria*	_learnedMaterias[4];
-	int	_learnedCount;
 public:
 	MateriaSource(void);
 	~MateriaSource(void);

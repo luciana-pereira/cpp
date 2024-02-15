@@ -15,25 +15,29 @@
 Cure::Cure() : AMateria("cure")
 {
 	std::cout << "Cure constructor" << std::endl;
+	return ;
 }
 
 Cure::Cure(std::string const & type) : AMateria(type)
 {
 	std::cout << "Cure constructor" << std::endl;
+	return ;
 }
 
 Cure::Cure(const Cure &m) : AMateria(m)
 {
 	std::cout << "Cure copy constructor" << std::endl;
 	*this = m;
+	return ;
 }
 
-Cure::~Cure()
+Cure::~Cure(void)
 {
 	std::cout << "Cure destructor" << std::endl;
+	return ;
 }
 
-AMateria* Cure::clone() const
+AMateria* Cure::clone(void) const
 {
 	return (new Cure());
 }

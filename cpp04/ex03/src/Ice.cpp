@@ -17,17 +17,20 @@
 Ice::Ice(void) : AMateria("ice")
 {
 	std::cout << "Ice constructor" << std::endl;
+	return ;
 }
 
 Ice::Ice(Ice const &m) : AMateria(m)
 {
 	std::cout << "Ice copy constructor" << std::endl;
 	*this = m;
+	return ;
 }
 
 Ice::~Ice(void)
 {
 	std::cout << "Ice destructor" << std::endl;
+	return ;
 }
 
 AMateria* Ice::clone(void) const
@@ -37,16 +40,9 @@ AMateria* Ice::clone(void) const
 
 void Ice::use(ICharacter& target)
 {
-    // Verifica se a classe de target é realmente do tipo ICharacter
-    ICharacter* character = dynamic_cast<ICharacter*>(&target);
-    if (character) {
-        // Se for, imprime o nome do personagem
-        std::cout << "* shoots an ice bolt at " << character->getName() << std::endl;
-    } else {
-        // Caso contrário, imprime uma mensagem genérica
-        std::cout << "* shoots an ice bolt at something *" << std::endl;
-    }
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
+
 Ice&	Ice::operator=(Ice const &m)
 {
 	std::cout << "Ice assignment operator" << std::endl;
@@ -58,5 +54,5 @@ Ice&	Ice::operator=(Ice const &m)
 std::ostream& operator<<(std::ostream &stream, const Ice& m)
 {
     stream << "Type: " << m.getType() << std::endl;
-    return stream;
+    return (stream);
 }

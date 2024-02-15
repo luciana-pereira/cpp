@@ -13,26 +13,30 @@
 #include "../include/AMateria.hpp"
 #include "../include/ICharacter.hpp"
 
-AMateria::AMateria(void) : _type("")
+AMateria::AMateria(void): _type("")
 {
 	std::cout << "Abstract Materia constructor" << std::endl;
+	return ;
 }
 
 AMateria::AMateria(std::string const &type) : _type(type)
 {
 	std::cout << "Abstract Materia constructor" << std::endl;
+	return ;
 }
 
 AMateria::AMateria(AMateria const &m)
 {
 	std::cout << "Abstract Materia copy constructor" << std::endl;
 	*this = m;
+	return ;
 }
 
 
 AMateria::~AMateria(void)
 {
 	std::cout << "Abstract Materia destructor" << std::endl;
+	return ;
 }
 
 std::string const &AMateria::getType(void) const
