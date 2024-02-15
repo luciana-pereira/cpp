@@ -16,3 +16,5 @@ Os exerciciosdo módulo 00 contem a implementação de Namespaces, classes, fun�
 - #### Modulo 07
 - #### Modulo 08
 - #### Modulo 09
+
+Referência: [Documentação C++](https://cplusplus.com/)
