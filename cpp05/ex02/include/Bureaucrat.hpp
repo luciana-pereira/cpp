@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:19:53 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 07:34:28 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/02/17 07:42:28 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ public:
 	int		getGrade(void) const;
 	void	incrementGrade(void);
 	void	decrementGrade(void);
+	void	executeForm(const AForm &form);
+	void	checkSignedForm(AForm &form);
 };
 
 std::ostream	&operator<<(std::ostream& os, const Bureaucrat& bureaucrat);

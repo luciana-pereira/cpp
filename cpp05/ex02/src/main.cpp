@@ -6,12 +6,15 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:11:43 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 04:05:09 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/02/17 05:12:16 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Bureaucrat.hpp"
-#include "../include/Form.hpp"
+#include "../include/AForm.hpp"
+#include "../include/ShrubberyCreationForm.hpp"
+#include "../include/RobotomyRequestForm.hpp"
+#include "../include/PresidentialPardonForm.hpp"
 
 int main(void)
 {
@@ -22,22 +25,26 @@ int main(void)
 		Bureaucrat lowGradeBureaucrat("Jane", 150);
 		std::cout << lowGradeBureaucrat << std::endl;
 
-		highGradeBureaucrat.incrementGrade();
-		std::cout << highGradeBureaucrat << std::endl;
+		// Test ShrubberyCreationForm
+		ShrubberyCreationForm shrubberyForm("Home");
+		std::cout << shrubberyForm << std::endl;
 
-		lowGradeBureaucrat.decrementGrade();
-		std::cout << lowGradeBureaucrat << std::endl;
+		shrubberyForm.beSigned(highGradeBureaucrat);
+		highGradeBureaucrat.executeForm(shrubberyForm);
 
-		// Trying to create a bureaucrat with an invalid grade
-		Bureaucrat invalidGradeBureaucrat("Invalid", 151);
+		// Test RobotomyRequestForm
+		RobotomyRequestForm robotomyForm("Target");
+		std::cout << robotomyForm << std::endl;
 
-		Form form("Important Form", 5, 10);
-		std::cout << form << std::endl;
+		robotomyForm.beSigned(lowGradeBureaucrat);
+		lowGradeBureaucrat.executeForm(robotomyForm);
 
-		form.beSigned(highGradeBureaucrat);
-		std::cout << form << std::endl;
+		// Test PresidentialPardonForm
+		PresidentialPardonForm pardonForm("Criminal");
+		std::cout << pardonForm << std::endl;
 
-		form.beSigned(lowGradeBureaucrat);
+		pardonForm.beSigned(highGradeBureaucrat);
+		highGradeBureaucrat.executeForm(pardonForm);	
 	} catch (const std::exception& e) {
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}

@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:19:53 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 07:34:28 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/02/17 21:32:30 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ private:
 public:
 	class GradeTooHighException : public std::exception {
 	public:
-		const char* what() const throw();
+		virtual const char* what() const throw();
 	};
 	class GradeTooLowException : public std::exception {
 	public:
-		const char* what() const throw();
+		virtual const char* what() const throw();
 	};
-	Bureaucrat();
+	Bureaucrat(void);
 	Bureaucrat(const std::string& name, int grade);
 	Bureaucrat(const Bureaucrat& bureaucrat);
 	Bureaucrat& operator=(const Bureaucrat& bureaucrat);
@@ -43,6 +43,8 @@ public:
 	int		getGrade(void) const;
 	void	incrementGrade(void);
 	void	decrementGrade(void);
+	void	executeForm(const AForm &form);
+	void	checkSignedForm(AForm &form);
 };
 
 std::ostream	&operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
