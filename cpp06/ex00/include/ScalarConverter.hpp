@@ -15,17 +15,18 @@
 
 #include <string>
 #include <cmath>
-#include <stdexcept>    // For invalid_argument, out_of_range
+#include <stdexcept>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 #include <cctype>
-#include <cstdlib>   // para strtol, atol
-#include <limits>    // para std::numeric_limits
-class ScalarConverter {
+#include <cstdlib>
+#include <limits>
+
+class	ScalarConverter {
 public:
-	// ScalarConverter(void);
-	// ~ScalarConverter(void);
+	ScalarConverter(void);
+	~ScalarConverter(void);
 	static void	convert(std::string& literal);
 };
 
