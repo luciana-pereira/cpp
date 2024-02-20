@@ -12,9 +12,9 @@
 
 #include "../include/ScalarConverter.hpp"
 
-// ScalarConverter::ScalarConverter(void) {}
+ScalarConverter::ScalarConverter(void) {}
 
-// ScalarConverter::~ScalarConverter(void) {}
+ScalarConverter::~ScalarConverter(void) {}
 
 #include <iostream>
 #include <iomanip>
