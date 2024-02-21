@@ -30,6 +30,7 @@ void ScalarConverter::convert(std::string& literal) {
     std::string pseudoLiterals[6] = {
         "-inff", "+inff", "nanf", "-inf", "+inf", "nan"
     };
+	
     const char* nonPrintableChars[5] = {
         "\t", "\n", "\r", "\v", "\f"
     };
