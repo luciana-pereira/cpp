@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 23:04:12 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/19 01:33:52 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/03/03 20:43:08 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,110 +17,121 @@
 int	main(void)
 {
 	std::cout << std::endl;
-	std::cout << "=== START OF TESTS ===" << std::endl;
+	std::cout << "==== START OF TESTS ====" << std::endl;
 	std::cout << std::endl;
 
-	std::cout << " Valid literals:" << std::endl;
+	std::cout << "==== CHAR LITERALS ====" << std::endl;
+	
+	std::cout << "./convert c" << std::endl;
+	std::string literal1 = "c";
+	ScalarConverter::convert(literal1);
 	std::cout << std::endl;
 
-	std::cout << "./convert 0" << std::endl;
-	std::string literal2 = "0";
+	std::cout << "./convert a" << std::endl;
+	std::string literal2 = "a";
 	ScalarConverter::convert(literal2);
 	std::cout << std::endl;
 
+	std::cout << "==== INT LITERALS ====" << std::endl;
+	
+	std::cout << "./convert 0" << std::endl;
+	std::string literal3 = "0";
+	ScalarConverter::convert(literal3);
+	std::cout << std::endl;
+
+	std::cout << "./convert -42" << std::endl;
+	std::string literal4 = "-42";
+	ScalarConverter::convert(literal4);
+	std::cout << std::endl;
+
+	std::cout << "./convert 42" << std::endl;
+	std::string literal5 = "42";
+	ScalarConverter::convert(literal5);
+	std::cout << std::endl;
+
+	std::cout << "==== FLOAT LITERALS ====" << std::endl;
+
 	std::cout << "./convert 0.0f" << std::endl;
-	std::string literal22 = "0.0f";
-	ScalarConverter::convert(literal22);
-	std::cout << std::endl;
-
-	std::cout << "./convert c" << std::endl;
-	std::string literal23 = "c";
-	ScalarConverter::convert(literal23);
-	std::cout << std::endl;
-
-	std::cout << "./convert abc" << std::endl;
-	std::string literal24 = "abc";
-	ScalarConverter::convert(literal24);
-	std::cout << std::endl;
-
-	std::cout << "\n./convert 42.0f" << std::endl;
-	std::string literal25 = "42.0f";
-	ScalarConverter::convert(literal25);
-	std::cout << std::endl;
-
-	std::cout << "\n./convert -42.42f" << std::endl;
-	std::string literal6 = "-42.42f";
+	std::string literal6 = "0.0f";
 	ScalarConverter::convert(literal6);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert +42.42f" << std::endl;
-	std::string literal7 = "+42.42f";
+	std::cout << "./convert -4.2f" << std::endl;
+	std::string literal7 = "-4.2f";
 	ScalarConverter::convert(literal7);
 	std::cout << std::endl;
-
-	std::cout << "\n./convert -" << std::endl;
-	std::string literal8 = "-";
+	
+	std::cout << "./convert 4.2f" << std::endl;
+	std::string literal8 = "4.2f";
 	ScalarConverter::convert(literal8);
 	std::cout << std::endl;
-
-	std::cout << "\n./convert +" << std::endl;
-	std::string literal9 = "+";
+	
+	std::cout << "./convert 42.0f" << std::endl;
+	std::string literal9 = "42.0f";
 	ScalarConverter::convert(literal9);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert *" << std::endl;
-	std::string literal10 = "*";
+	std::cout << "==== DOUBLE LITERALS ====" << std::endl;
+
+	std::cout << "./convert 0.0" << std::endl;
+	std::string literal10 = "0.0";
 	ScalarConverter::convert(literal10);
 	std::cout << std::endl;
 
-	std::cout << "======================" << std::endl;
-
-	std::cout << "\nPseudo literals:" << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "./convert -inff" << std::endl;
-	std::string literal11 = "-inff";
+	std::cout << "./convert -4.2" << std::endl;
+	std::string literal11 = "-4.2";
 	ScalarConverter::convert(literal11);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert +inff" << std::endl;
-	std::string literal12 = "+inff";
+	std::cout << "./convert 4.2" << std::endl;
+	std::string literal12 = "4.2";
 	ScalarConverter::convert(literal12);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert nanf" << std::endl;
-	std::string literal13 = "nanf";
+	std::cout << "==== PSEUDO LITERALS ====" << std::endl;
+	std::cout << "Pseudo literals:" << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "./convert -inff" << std::endl;
+	std::string literal13 = "-inff";
 	ScalarConverter::convert(literal13);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert -inf" << std::endl;
-	std::string literal14 = "-inf";
+	std::cout << "./convert +inff" << std::endl;
+	std::string literal14 = "+inff";
 	ScalarConverter::convert(literal14);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert +inf" << std::endl;
-	std::string literal15 = "+inf";
+	std::cout << "./convert nanf" << std::endl;
+	std::string literal15 = "nanf";
 	ScalarConverter::convert(literal15);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert nan" << std::endl;
-	std::string literal16 = "nan";
+	std::cout << "./convert -inf" << std::endl;
+	std::string literal16 = "-inf";
 	ScalarConverter::convert(literal16);
 	std::cout << std::endl;
 
-	std::cout << "======================" << std::endl;
-
-	std::cout << "\nInvalid literals:" << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "\n./convert \t " << std::endl;
-	std::string literal17 = "\t";
+	std::cout << "./convert +inf" << std::endl;
+	std::string literal17 = "+inf";
 	ScalarConverter::convert(literal17);
 	std::cout << std::endl;
 
-	std::cout << "\n./convert 1.2.3" << std::endl;
-	std::string literal18 = "1.2.3";
+	std::cout << "./convert nan" << std::endl;
+	std::string literal18 = "nan";
 	ScalarConverter::convert(literal18);
+	std::cout << std::endl;
+
+	std::cout << "==== NON PRINTABLE ====" << std::endl;
+
+	std::cout << "./convert \t " << std::endl;
+	std::string literal19 = "\t";
+	ScalarConverter::convert(literal19);
+	std::cout << std::endl;
+
+	std::cout << "./convert \a" << std::endl;
+	std::string literal20 = "\a";
+	ScalarConverter::convert(literal20);
 	std::cout << std::endl;
 
 	std::cout << "======================" << std::endl;

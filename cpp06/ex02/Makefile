@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/16 05:36:34 by lucperei          #+#    #+#              #
-#    Updated: 2024/02/24 15:04:11 by lucperei         ###   ########.fr        #
+#    Created: 2024/03/03 22:21:15 by lucperei          #+#    #+#              #
+#    Updated: 2024/03/04 01:47:10 by lucperei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = identify
 
 CC     = c++
 RM     = rm -rf

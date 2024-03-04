@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/18 00:49:36 by lucperei          #+#    #+#             */
-/*   Updated: 2024/03/03 21:35:36 by lucperei         ###   ########.fr       */
+/*   Created: 2024/02/26 02:35:15 by lucperei          #+#    #+#             */
+/*   Updated: 2024/02/26 03:56:35 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALAR_CONVERTER_HPP
-# define SCALAR_CONVERTER_HPP
+#include "../include/Serializer.hpp"
 
-#include <string>
+uintptr_t	Serializer::serialize(Data* ptr) {
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
 
-class ScalarConverter {
-public:
-	static void	convert(std::string& literal);
-};
-
-#endif
+Data*	Serializer::deserialize(uintptr_t raw) {
+	return (reinterpret_cast<Data*>(raw));
+}

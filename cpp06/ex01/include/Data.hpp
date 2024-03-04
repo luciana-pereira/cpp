@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/18 00:49:36 by lucperei          #+#    #+#             */
-/*   Updated: 2024/03/03 21:35:36 by lucperei         ###   ########.fr       */
+/*   Created: 2024/03/03 22:04:41 by lucperei          #+#    #+#             */
+/*   Updated: 2024/03/03 22:50:13 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALAR_CONVERTER_HPP
-# define SCALAR_CONVERTER_HPP
+#ifndef DATA_HPP
+# define DATA_HPP
 
 #include <string>
 
-class ScalarConverter {
+class Data {
+private:
+	int	value;
 public:
-	static void	convert(std::string& literal);
+	Data(int value);
+	int	getDataValue() const;	
 };
 
 #endif

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/18 00:49:36 by lucperei          #+#    #+#             */
-/*   Updated: 2024/03/03 21:35:36 by lucperei         ###   ########.fr       */
+/*   Created: 2024/03/03 23:35:25 by lucperei          #+#    #+#             */
+/*   Updated: 2024/03/04 01:52:57 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALAR_CONVERTER_HPP
-# define SCALAR_CONVERTER_HPP
+#ifndef BASE_HPP
+#define BASE_HPP
 
-#include <string>
+#include <iostream>
+#include <cstdlib>
+#include <stdlib.h>
 
-class ScalarConverter {
+class Base {
 public:
-	static void	convert(std::string& literal);
+	virtual ~Base() {}
 };
+
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+Base*	generate(void);
+void	identify(Base* p);
+void	identify(Base& p);
 
 #endif
