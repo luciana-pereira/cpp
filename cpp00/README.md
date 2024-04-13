@@ -37,3 +37,15 @@ Ou seja, somente pelo **"acessadores correspondentes"**, "métodos de acesso", o
 - [x] O loop deve ser feito em C++98 utilizansdo do _**std::cin**_, ou seja, no main ele sera utilizado para ler a entrada do usuário. O std::cin é o fluxo de entrada padrão.
 - [x] Os comandos ADD, SEARCH e EXIT devem agir conforme subject.
 
+#### Exerício 02: O trabalho dos seus sonhos
+Diretorio: _**ex02**_</br></br>
+O objetivo e recriar o arquivo Account.cpp, com base no arquivo de cabeçalho Account.hpp
+que contém a definição da classe Account, e um arquivo de log que pode ser usado para entender como a classe Account foi implementada originalmente.
+
+Desta forma podemos restaurar a funcionalidade perdida, permitindo que o projeto continue sem interrupções. Isso é crucial para manter a integridade e continuidade do trabalho em equipe, especialmente em um ambiente de desenvolvimento onde a colaboração é fundamental.
+
+O programa deve ser capaz de reconstruir o arquivo Account.cpp com base nas informações disponíveis no arquivo de cabeçalho **Account.hpp** e no arquivo de log. Desta forma teremos que entender como os membros da classe Account foram declarados e implementados, bem como quaisquer funções e métodos associados.
+
+O programa tem de produzir a mesma saída que estava registrada no arquivo de log. O sucesso na reconstrução do arquivo Account.cpp demonstra habilidades de resolução de problemas e proficiência em C++.
+
+Ou seja, de forma geral, a implementação do arquivo _**Account.cpp**_ é baseada nas operações básicas de uma conta bancária, como depósitos, retiradas e consulta de saldo, e fornece métodos para rastrear informações globais sobre todas as contas.
