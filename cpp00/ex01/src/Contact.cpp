@@ -12,6 +12,7 @@
 
 #include "../include/Contact.hpp"
 
+// O contrutor abaixo inicializa  os membros de dados com string vazia.
 Contact::Contact(void)
 	: first_name(""),
 	last_name(""),
@@ -20,6 +21,7 @@ Contact::Contact(void)
 	darkest_secret("")
 {};
 
+// Abaixo temos os métodos de acesso público que retornam os valores dos membros de dados correspondente.
 std::string	Contact::getFirstName(void)
 {
 	return (this->first_name);
@@ -45,6 +47,12 @@ std::string	Contact::getDarkestSecret(void)
 	return (this->darkest_secret);
 }
 
+// Abaixo temos os metodos privados para limpeza de dados:
+
+// Método pa remover espaços consecutivos ou espaços no início e no final da string, 
+// intera sobre a string com for ate que não aja mais caracteres a serem removidos, 
+// ao logo de seu comprimento(size), utilizando da função erase() para remover o caracter 
+// de espaço, nela passamos o indice onde caracter sera removido e a quantidade no caso 1.
 void	Contact::_removeConsecutiveSpaces(std::string& data)
 {
 	int	size;
@@ -62,6 +70,7 @@ void	Contact::_removeConsecutiveSpaces(std::string& data)
 	}
 }
 
+// Método para remover espaços no início e no final de uma string.
 void	Contact::_removeOuterSpaces(std::string& data)
 {
 	int	size;
@@ -79,6 +88,7 @@ void	Contact::_removeOuterSpaces(std::string& data)
 	}
 }
 
+// Método aplica as funções de limpeza de dados para remover espaços desnecessários.
 void	Contact::_cleanContactData(std::string& data)
 {
 	int	size;
@@ -91,6 +101,9 @@ void	Contact::_cleanContactData(std::string& data)
 	}
 }
 
+// Abaixo temos os metodos privados para validação de dados
+
+// Método para verifica se todos os caracteres de uma string de número de telefone são dígitos ou o caractere '+'.
 bool	Contact::_validatePhoneCharacters(std::string& phone_number)
 {
 	for (std::size_t index = 0; index < phone_number.length(); ++index)
@@ -105,6 +118,7 @@ bool	Contact::_validatePhoneCharacters(std::string& phone_number)
 	return (true);
 }
 
+// Método para verifica se o comprimento de uma string de número de telefone é válido.
 void	Contact::_validatePhoneLength(std::string& phone_number)
 {
 	if ((phone_number[0] == '+' && phone_number.length() != 14) ||
@@ -116,6 +130,7 @@ void	Contact::_validatePhoneLength(std::string& phone_number)
 	}
 }
 
+// Método aplica as funções de validação de número de telefone.
 void	Contact::_verifyPhoneNumber(std::string& phone_number)
 {
 	_cleanContactData(phone_number);
@@ -125,6 +140,7 @@ void	Contact::_verifyPhoneNumber(std::string& phone_number)
 	}
 }
 
+// Método para verifica se todos os caracteres de uma string são imprimíveis.
 void	Contact::_verifyCharacters(std::string& contact_data)
 {
 	for (std::size_t index = 0; index < contact_data.length(); ++index)
@@ -138,6 +154,7 @@ void	Contact::_verifyCharacters(std::string& contact_data)
 	}
 }
 
+// Método solicita a entrada do usuário para um campo específico do contato, limpa e valida os dados de entrada.
 void	Contact::_getInput(const std::string& field, std::string& data, int index)
 {
 	while (true)
@@ -161,6 +178,7 @@ void	Contact::_getInput(const std::string& field, std::string& data, int index)
 	}
 }
 
+// Método atribui os dados de contato aos membros de dados correspondentes.
 void	Contact::_assignData(const std::string contact_data[])
 {
 	first_name = contact_data[0];
@@ -170,6 +188,8 @@ void	Contact::_assignData(const std::string contact_data[])
 	darkest_secret = contact_data[4];
 }
 
+// Método solicita a entrada de dados para cada campo do contato (nome, sobrenome, apelido, 
+// número de telefone e segredo mais obscuro) e os atribui aos membros de dados correspondentes.
 void	Contact::getContactData(void)
 {
 	std::string fields[5] = {
