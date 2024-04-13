@@ -18,4 +18,22 @@ Este é um fluxo de saída especializado que é usado exclusivamente para enviar
 
 Neste exercicio especificamente, _**lidamos com o fluxo básico de saída (ostream)**_ em C++98. Ele usa o objeto **std::cout** para enviar dados para a saída padrão, que geralmente é o console.
 
-De forma geral, no programa **std::cout** é usado para enviar os caracteres convertidos para maiúsculas para a saída padrão e **std::endl** é usado para inserir uma nova linha na saída padrão, indicando o final de uma linha de texto.
+De forma geral, no programa **std::cout** é usado para enviar os caracteres convertidos para maiúsculas para a saída padrão e **std::endl** é usado para inserir uma nova linha na saída padrão, indicando o final de uma linha de texto.</br></br>
+
+#### Exerício 01: Minha Lista Telefônica Incrível
+Diretorio: _**ex01**_</br></br>
+O objetivo e criar um programa que se comporte como um software de lista telefônica incrivel e de baixa qualidade que possua tratamento de erros. Para faze-lo, criamos duas classes, a classe Contact que que representa um contato na agenda telefônica e PhoneBook que gerencia uma lista de contatos.
+
+O programa deve ter:
+- [x] Tratamento de erros.
+- [x] Os atributos da Classe Contact devem ser privados.
+- [x] A classe deve ter os acessadores correspondentes expostos, ou seja, que os métodos de acesso como **"getters"** e **"setters"** disponíveis para acessar e modificar os membros privados da classe, que são acessíveis apenas dentro da própria classe e não podem ser acessados diretamente por objetos externos à classe. Quando os "acessadores correspondentes" são expostos, isso significa que para cada membro de dados privados (private) da classe, deve haver pelo menos dois métodos públicos **"getter"** e **"setter"**.</br> 
+A exposição desses **"acessadores correspondentes"** permitem que outros objetos acessem e modifiquem os dados encapsulados (as propriedades privadas, os membros de dados privados de uma classe) da classe de maneira controlada e consistente, seguindo os princípios de encapsulamento e abstração de dados.
+Ou seja, somente pelo **"acessadores correspondentes"**, "métodos de acesso", os métodos públicos controlados pela classe que podem interagir com esses dados que são protegidos pelo encapsulamento.
+- [x] Devem garantir que métodos que somente são utilizados dentro da classe sejam privados, e os que são utilizados fora da classe sejam público.
+- [x] A classe Contact deve ter atributos para cada contato.
+- [x] A Classe PhoneBook deve ter uma matriz de contatos.
+- [x] Deve conter um loop que lê as entradas e processa.
+- [x] O loop deve ser feito em C++98 utilizansdo do _**std::cin**_, ou seja, no main ele sera utilizado para ler a entrada do usuário. O std::cin é o fluxo de entrada padrão.
+- [x] Os comandos ADD, SEARCH e EXIT devem agir conforme subject.
+
