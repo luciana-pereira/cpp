@@ -4,8 +4,8 @@
 
 O CPP e constituido por módulos, listas de exercicios que vão do módulo 00 ao módulo 09 sobre conceitos clássicos de Programação Orientada a Objetos (POO).
 
-- #### Modulo 00
-Os exerciciosdo módulo 00 contem a implementação de Namespaces, classes, funções de membro, fluxos stdio, listas de inicialização, static, const e alguns outros itens básicos.
+- #### [Modulo 00]()
+Os exerciciosdo módulo 00 contem a implementação de Namespaces, classes, funções de membro, fluxos stdio, listas de inicialização, static, const e alguns outros itens básicos, clique no modulo para saber mais.
 
 - #### Modulo 01
 - #### Modulo 02
