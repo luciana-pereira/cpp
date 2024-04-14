@@ -1,9 +1,17 @@
 #include "../include/Harl.hpp"
 
+/*
+A classe Harl, que possui métodos para imprimir mensagens de log com diferentes níveis de gravidade: 
+debug, info, warning e error. O programa fornece a capacidade de chamar um desses métodos com base em 
+uma string que representa o nível de log desejado.
+*/
 Harl::Harl(void) {}
 
 Harl::~Harl(void) {}
-
+/*
+Abaixo temos métodos para imprimir mensagens de log com diferentes níveis de gravidade, 
+como debug, info, warning e error, que serão executados conforme validação.
+*/
 void	Harl::debug(void)
 {
 	std::cout << "[ " << "DEBUG" << " ]" << std::endl;
@@ -40,8 +48,14 @@ void	Harl::argNotValid(void)
 	std::cerr << "Available options: DEBUG, INFO, WARNING, ERROR" << std::endl;
 }
 
+/*
+ Recebe uma string representando o nível de log desejado.
+*/
 void	Harl::complain(std::string level)
 {
+	/*
+ 	Definido um array de ponteiros para os métodos da classe Harl que correspondem aos diferentes níveis de log.
+ 	*/
 	void (Harl::*functions[5])() = {
 		&Harl::debug,
 		&Harl::info,
@@ -49,6 +63,7 @@ void	Harl::complain(std::string level)
 		&Harl::error,
 		&Harl::argNotValid
 	};
+	// Definido um array de strings contendo os níveis de log válidos.
 	std::string	validLevels[4] = {
 		"debug",
 		"info",
@@ -58,6 +73,16 @@ void	Harl::complain(std::string level)
 	int	index;
 
 	index = 0;
+	/*
+ 	Itera sobre o array de níveis de log válidos para encontrar o índice correspondente ao nível de 
+  	log especificado na entrada.
+
+	Chama o método correspondente ao nível de log encontrado, usando ponteiros para função e a sintaxe 
+ 	de ponteiro para membro (.*).
+
+  	Se a string do nível de log não corresponder a nenhum dos níveis válidos, imprime uma mensagem de 
+   	erro usando std::cerr  que conta na main.c.
+ 	*/
 	while (index < 4 && validLevels[index].compare(level) != 0)
 	{
 		index++;
