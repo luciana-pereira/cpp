@@ -1,10 +1,10 @@
 #include "../include/HumanA.hpp"
 
-// No construtor de HumanA, o objeto está sendo inicializado com um nome (humanName) 
-// e uma arma inicial (initialWeapon). Ele uma inicialização de membro (member initializer list) 
+// No construtor de HumanA, o objeto está sendo inicializado com um nome (name) 
+// e uma arma inicial (weapon). Ele uma inicialização de membro (member initializer list) 
 // para inicializar os membros _name e _weapon.
-HumanA::HumanA(const std::string& humanName, const Weapon& initialWeapon)
-	: _name(humanName), _weapon(initialWeapon) {}
+HumanA::HumanA(std::string name, Weapon& weapon)
+	: _name(name), _weapon(weapon) {}
 
 // Este método exibira uma mensagem indicando que o humano está atacando com sua arma.
 // Ela exibira o nome do humano e a função getType() é chamada no objeto Weapon armazenado 
@@ -13,5 +13,5 @@ HumanA::HumanA(const std::string& humanName, const Weapon& initialWeapon)
 // de arma com que está atacando.
 void HumanA::attack(void)
 {
-	std::cout << _name << " attacks with their " << weapon.getType() << std::endl;
+	std::cout << _name << " attacks with their " << _weapon.getType() << std::endl;
 }
