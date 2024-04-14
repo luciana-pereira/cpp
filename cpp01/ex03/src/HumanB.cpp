@@ -1,40 +1,23 @@
 #include "../include/HumanB.hpp"
 
 /* 
-O objeto está sendo inicializado apenas com um nome (humanName). Não há arma inicial fornecida.
+O objeto está sendo inicializado apenas com um nome (name). Não há arma inicial fornecida.
 De forma geral o construtor utiliza uma inicialização de membro (member initializer list) para 
 inicializar os membros name e weapon.
 
-O membro name (do tipo std::string) é inicializado com o valor passado como argumento humanName.
-O membro weapon (um ponteiro para Weapon) é inicializado com NULL, indicando que o humano está desarmado.
+O membro name (do tipo std::string) é inicializado com o valor passado como argumento name.
+O membro weapon (um ponteiro para Weapon) é inicializado com NULL, indicando que o humano 
+está desarmado.
 */
-HumanB::HumanB(const std::string& humanName) : name(humanName), weapon(NULL) {}
+HumanB::HumanB(std::string name) : _name(name), _weapon(NULL) {}
 
 /*
-No destrutor de HumanB, é verifico se o ponteiro para weapon não é nulo 
-(ou seja, se aponta para algum objeto Weapon alocado dinamicamente). 
-Se não for nulo, o objeto Weapon é deletado da memória para evitar vazamentos de memória.
+Neste método setWeapon(Weapon& weapon), é recebida uma nova arma como parâmetro. 
+Este método é usado para definir a arma do humano. Este novo objeto é atribuído ao ponteiro weapon.
 */
-HumanB::~HumanB(void)
+void	HumanB::setWeapon(Weapon& weapon)
 {
-	delete weapon;
-}
-
-/*
-Neste método setWeapon(const Weapon& newWeapon), é recebida uma nova arma como parâmetro. 
-Este método é usado para definir a arma do humano. Se o ponteiro weapon já apontar para uma arma 
-(ou seja, se não for NULL, isso e realizado no construtor), a arma anterior é deletada da memória 
-para evitar vazamentos.
-Em seguida, um novo objeto Weapon é criado no heap, usando o tipo da nova arma como argumento 
-para o construtor. Este novo objeto é atribuído ao ponteiro weapon.
-*/
-void	HumanB::setWeapon(const Weapon& newWeapon)
-{
-	if (weapon != NULL)
-	{
-		delete weapon;
-	}
-	weapon = new Weapon(newWeapon.getType());
+	_weapon = &weapon;
 }
 
 /*
@@ -52,10 +35,10 @@ void	HumanB::attack(void)
 {
 	if (weapon != NULL)
 	{
-		std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 	} 
 	else
 	{
-		std::cout << name << " is unarmed" << std::endl;
+		std::cout << _name << " is unarmed" << std::endl;
 	}
 }
