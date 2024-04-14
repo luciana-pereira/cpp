@@ -20,10 +20,28 @@ O objetivo deste programa é criar uma "horda" de zumbis, alocando memoria para 
 
 De forma geral a essa **classe Zombie (Zombie.cpp)** permite criar objetos que representam zombies com nomes específicos, e também fornece métodos para que esses zombies anunciem-se e informa quando eles são destruídos. A **função zombieHorde (zombieHorde.cpp)** cria dinamicamente um número especificado de objetos Zombie, cada um com o mesmo nome, e retorna um ponteiro para o primeiro elemento do array criado.
 
+#### Exerício 02: Hi this is brain!
+Diretorio: _**ex02**_</br></br>
+O objetivo deste programa é demonstrar o conceito de ponteiros e referências em c++98, mostrando como eles se relacionam com variáveis e como acessar valores e endereços de memória. Ou seja, lidar com ponteiros e refencias e a sintaxe.
 
+O programa sera capaz de imprimir os endereços de memória e os valores de uma variável std::string, um ponteiro para essa variável e uma referência para ela.
 
+#### Exerício 03: Unnecessary violence
+Diretorio: _**ex03**_</br></br>
+O objetivo deste programa é implementar duas classes, HumanA e HumanB, que possuem um membro do tipo Weapon (arma) e um nome. Ambas as classes têm uma função de membro attack() que exibe uma mensagem indicando que o humano está atacando com sua arma.
 
+A classe Weapon possui um atributo privado do tipo string para armazenar o tipo de arma e métodos para obter e definir o tipo da arma.
 
+A diferença entre HumanA e HumanB está na forma como eles lidam com a arma:
+- HumanA recebe a arma no construtor e sempre estará armado.
+- HumanB não recebe a arma no construtor e pode ou não ter uma arma.
 
+Para verificar a implementação, o código fornecido executa dois casos de teste:
+1. Cria um objeto HumanA chamado Bob, que é inicializado com uma arma e ataca duas vezes.
+2. Cria um objeto HumanB chamado Jim, que é inicializado sem arma, mas depois recebe uma arma e ataca duas vezes.
 
+Para evitar vazamentos de memória, é necessário garantir que os recursos alocados dinamicamente sejam liberados adequadamente.
 
+Quanto à escolha entre ponteiro e referência para a Weapon:
+- Usar um ponteiro para Weapon seria mais adequado para HumanB, pois ele pode não ter uma arma. O ponteiro poderia ser inicializado como nulo e, se uma arma fosse atribuída a ele posteriormente, poderia ser verificado se ele é diferente de nulo antes de usar a arma.
+- Usar uma referência para Weapon seria mais adequado para HumanA, pois ele sempre terá uma arma e não precisará lidar com casos de nulidade. Além disso, usar uma referência tornaria o código mais simples e mais seguro, pois não precisaria verificar a nulidade do ponteiro.
