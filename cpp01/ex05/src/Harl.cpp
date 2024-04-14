@@ -1,92 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/15 01:29:46 by lucperei          #+#    #+#             */
+/*   Updated: 2024/04/15 01:34:16 by lucperei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Harl.hpp"
 
-/*
-A classe Harl, que possui métodos para imprimir mensagens de log com diferentes níveis de gravidade: 
-debug, info, warning e error. O programa fornece a capacidade de chamar um desses métodos com base em 
-uma string que representa o nível de log desejado.
-*/
-Harl::Harl(void) {}
+// construtor e do destruidor
+Harl::Harl(void) {
+}
 
-Harl::~Harl(void) {}
-/*
-Abaixo temos métodos para imprimir mensagens de log com diferentes níveis de gravidade, 
-como debug, info, warning e error, que serão executados conforme validação.
-*/
+Harl::~Harl(void) {
+}
+
 void	Harl::debug(void)
 {
-	std::cout << "[ " << "DEBUG" << " ]" << std::endl;
+	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "I love having extra bacon for my ";
 	std::cout << "7XL-double-cheese-triple-pickle-special-ketchup burger. ";
 	std::cout << "I really do!" << std::endl;
+	std::cout << std::endl;
 }
 
 void	Harl::info(void)
 {
-	std::cout << "[ " << "INFO" << " ]" << std::endl;
+	std::cout << "[ INFO ]" << std::endl;
 	std::cout << "I cannot believe adding extra bacon costs more money. ";
 	std::cout << "You didn’t put enough bacon in my burger! If you did, ";
 	std::cout << "I wouldn’t be asking for more!" << std::endl;
+	std::cout << std::endl;
 }
 
 void	Harl::warning(void)
 {
-	std::cout << "[ " << "WARNING" << " ]" << std::endl;
+	std::cout << "[ WARNING ]" << std::endl;
 	std::cout << "I think I deserve to have some extra bacon for free. ";
-	std::cout << "I’ve been coming for years whereas you started "; 
+	std::cout << "I’ve been coming for years whereas you started ";
 	std::cout << "working here since last month." << std::endl;
+	std::cout << std::endl;
 }
 
 void	Harl::error(void)
 {
-	std::cout << "[ " << "ERROR" << " ]" << std::endl;
+	std::cout << "[ ERROR ]" << std::endl;
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+	std::cout << std::endl;
 }
 
-void	Harl::argNotValid(void)
+void Harl::complain(std::string level)
 {
-	std::cerr << "You need to specify a valid log level for Harl! ";
-	std::cerr << "Available options: DEBUG, INFO, WARNING, ERROR" << std::endl;
-}
+	// Converte para inteiro
+	int hash = 0;
+	// Constantes para os valores de offset e de divisão na hash
+	const int hash_offset = 696;
+	const int hash_divider = 25;
+	// Constante para o fator de peso do caractere na hash
+	const int weight_factor = 4;
 
-/*
- Recebe uma string representando o nível de log desejado.
-*/
-void	Harl::complain(std::string level)
-{
-	/*
- 	Definido um array de ponteiros para os métodos da classe Harl que correspondem aos diferentes níveis de log.
- 	*/
-	void (Harl::*functions[5])() = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error,
-		&Harl::argNotValid
-	};
-	// Definido um array de strings contendo os níveis de log válidos.
-	std::string	validLevels[4] = {
-		"debug",
-		"info",
-		"warning",
-		"error"
-	};
-	int	index;
-
-	index = 0;
-	/*
- 	Itera sobre o array de níveis de log válidos para encontrar o índice correspondente ao nível de 
-  	log especificado na entrada.
-
-	Chama o método correspondente ao nível de log encontrado, usando ponteiros para função e a sintaxe 
- 	de ponteiro para membro (.*).
-
-  	Se a string do nível de log não corresponder a nenhum dos níveis válidos, imprime uma mensagem de 
-   	erro usando std::cerr  que conta na main.c.
- 	*/
-	while (index < 4 && validLevels[index].compare(level) != 0)
+	// Cálculo da hash
+	for (size_t index = 0; index < 4; ++index)
+		// Adiciona ao hash o valor ASCII do caractere multiplicado pelo fator 
+		// de peso correspondente
+		hash += level[index] * (weight_factor - index);
+	
+	// Determina o nível com base na hash calculada e no enum no .hpp
+	switch ((hash - hash_offset) / hash_divider)
 	{
-		index++;
+		case Harl::DEBUG:
+			debug();
+			info();
+			warning();
+			error();
+			break ;
+		case Harl::INFO:
+			info();
+			warning();
+			error();
+			break ;
+		case Harl::WARNING:
+			warning();
+			error();
+			break ;
+		case Harl::ERROR:
+			error();
+		 	break ;
 	}
-	(this->*functions[index])();
-	return ;
 }
