@@ -33,7 +33,7 @@ isso é exibida.
 */
 void	HumanB::attack(void)
 {
-	if (weapon != NULL)
+	if (_weapon != NULL)
 	{
 		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 	} 
