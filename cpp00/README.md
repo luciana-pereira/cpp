@@ -20,6 +20,8 @@ Neste exercicio especificamente, _**lidamos com o fluxo básico de saída (ostre
 
 De forma geral, no programa **std::cout** é usado para enviar os caracteres convertidos para maiúsculas para a saída padrão e **std::endl** é usado para inserir uma nova linha na saída padrão, indicando o final de uma linha de texto.</br></br>
 
+Também utilizamos neste exercício e nos demais os operadores **back arrows (<<)** que permite redirecionar o fluxo de saída padrão e **foward arrows (>>)** que permite buscar dados da entrada padrão.
+
 #### Exerício 01: Minha Lista Telefônica Incrível
 Diretorio: _**ex01**_</br></br>
 O objetivo e criar um programa que se comporte como um software de lista telefônica incrivel e de baixa qualidade que possua tratamento de erros. Para faze-lo, criamos duas classes, a classe Contact que que representa um contato na agenda telefônica e PhoneBook que gerencia uma lista de contatos.
