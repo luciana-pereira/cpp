@@ -24,7 +24,7 @@ const std::string& Weapon::getType(void)
 A função permite alterar o tipo da arma. Ela recebe um novo tipo como parâmetro e o atribui ao membro type. 
 Essa função permite a modificação do tipo da arma após a sua criação.
 */
-void Weapon::setType(std::string& type)
+void Weapon::setType(std::string type)
 {
 	_type = type;
 }
