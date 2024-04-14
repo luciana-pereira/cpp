@@ -45,3 +45,5 @@ Para evitar vazamentos de memória, é necessário garantir que os recursos aloc
 Quanto à escolha entre ponteiro e referência para a Weapon:
 - Usar um ponteiro para Weapon seria mais adequado para HumanB, pois ele pode não ter uma arma. O ponteiro poderia ser inicializado como nulo e, se uma arma fosse atribuída a ele posteriormente, poderia ser verificado se ele é diferente de nulo antes de usar a arma.
 - Usar uma referência para Weapon seria mais adequado para HumanA, pois ele sempre terá uma arma e não precisará lidar com casos de nulidade. Além disso, usar uma referência tornaria o código mais simples e mais seguro, pois não precisaria verificar a nulidade do ponteiro.
+
+De forma geral, estamos utilizando os conceitos aprendidos da ex02 e aplicando. neste exercício, como os ponteiros e refências
