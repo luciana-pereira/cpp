@@ -47,3 +47,17 @@ Quanto à escolha entre ponteiro e referência para a Weapon:
 - Usar uma referência para Weapon seria mais adequado para HumanA, pois ele sempre terá uma arma e não precisará lidar com casos de nulidade. Além disso, usar uma referência tornaria o código mais simples e mais seguro, pois não precisaria verificar a nulidade do ponteiro.
 
 De forma geral, estamos utilizando os conceitos aprendidos da ex02 e aplicando. neste exercício, como os ponteiros e refências
+
+#### Exerício 04: Sed is for losers
+Diretorio: _**ex04**_</br></br>
+O objetivo deste programa e realizar a substituição de letras ou texto de acordo com argumento passado para ser substituido no arquivo indicado como argumento.
+
+A implementação precisa ser realizada idealmente para que utilizemos _**ifstream**_ ou equivalente para realizar a leitura do arquivo e _**ofstream**_ ou equivalente para gravar no novo arquivo com a substituição.
+
+#### Exerício 05: Harl 2.0
+Diretorio: _**ex05**_</br></br>
+O objetivo deste programa e implementer a a classe Harl, com métodos para imprimir mensagens de log com diferentes níveis de gravidade: debug, info, warning e error. O programa fornece a capacidade de chamar um desses métodos com base em uma string que representa o nível de log desejado que e passado como argumento.
+
+#### Exerício 06: Harl 2.0
+Diretorio: _**ex06**_</br></br>
+O objetivo deste programa e identico ao execício ex05, porem ele toma como parâmetro um dos qautro níveis debug, info, warning e error e exibir as mensagens porem devera utilizar um filtro em switch case.
