@@ -56,7 +56,8 @@ void Fixed::setRawBits(int const raw)
 }
 
 /*
-Operador de atribuição, imprime uma mensagem indicando que o operador de atribuição foi chamado.
+Operador de atribuição, ou sobrecarga do operador de atribuição de cópia que 
+imprime uma mensagem indicando que o operador de atribuição foi chamado.
 Verifica se o objeto atual(this) não é o mesmo que other. Se eles forem diferentes, 
 copia o valor de other para o objeto atual.
 */
