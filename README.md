@@ -34,7 +34,19 @@ Na sobrecarga de funções, podemos ter várias funções com o mesmo nome, mas 
 
 **3. Forma de classe canônica ortodoxa**:
 
-- #### Modulo 03
+- #### [Modulo 03](https://github.com/luciana-pereira/cpp/tree/master/cpp03)
+Os exercicios do _**módulo 03 da versão 7**_ contem a implementação de programas que lidam com herança (inheritance), que é um conceito fundamental que permite que uma classe (conhecida como classe derivada ou subclasse) herde atributos e métodos de outra classe (conhecida como classe base ou superclasse). Isso significa que a classe derivada pode acessar e utilizar os membros da classe base, além de adicionar novos membros próprios ou substituir os membros herdados.
+
+Existem três tipos principais de herança em C++:
+
+1. **Herança Pública (public inheritance):** Nesse tipo de herança, os membros públicos e protegidos da classe base tornam-se membros públicos e protegidos da classe derivada, respectivamente. Os membros privados da classe base não são herdados. A herança pública é a forma mais comum de herança e é usada para estabelecer uma relação "é um" entre a classe derivada e a classe base.
+
+2. **Herança Protegida (protected inheritance):** Nesse tipo de herança, os membros públicos e protegidos da classe base tornam-se membros protegidos da classe derivada. Os membros privados da classe base não são herdados. A herança protegida é menos comum e é usada principalmente para restringir o acesso aos membros da classe base na classe derivada e suas subclasses.
+
+3. **Herança Privada (private inheritance):** Nesse tipo de herança, os membros públicos e protegidos da classe base tornam-se membros privados da classe derivada. Os membros privados da classe base não são herdados. A herança privada é usada quando a classe derivada precisa acessar os membros da classe base, mas não deve expor essa relação de herança para o mundo externo.
+
+De forma geral, herança em C++98 permite a reutilização de código, promova a modularidade e facilite a criação de hierarquias de classes, onde classes mais especializadas (derivadas) podem estender o comportamento de classes mais genéricas (base).
+
 - #### Modulo 04
 - #### Modulo 05
 - #### Modulo 06
