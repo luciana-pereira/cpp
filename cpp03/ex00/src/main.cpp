@@ -17,32 +17,37 @@ e em seguida, chama algumas funções membro para simular ações de ataque, dan
 */
 int	main(void)
 {
-	// Cria um objeto ClapTrap chamado claptrap1 com o nome "Clap1".
-	ClapTrap claptrap1("Clap1");
+	std::cout << "\n ---------- Start Of Teste | ClapTrap ---------- \n" << std::endl;
+	std::cout << "Create ClapTrap object using default constructor:\n";
+	ClapTrap ana("Ana");
+	std::cout << "Create Ana and initialize variables with " << ana << std::endl;
+	ClapTrap jane("Jane");
+	std::cout << "Create Jane and initialize variables with " << jane << std::endl;
 	
-	/*
-	Usa o construtor de cópia para criar um novo objeto ClapTrap chamado claptrap2, 
-  	que é uma cópia do objeto claptrap1. Portanto, o construtor de cópia é chamado.
-	*/
-	ClapTrap claptrap2 = claptrap1;
-	
-	// Cria um novo objeto ClapTrap chamado claptrap3 com o nome "Clap2".
-	ClapTrap claptrap3("Clap2");
-	
-	/*
-	Usa o operador de atribuição para atribuir os valores do objeto 
- 	claptrap1 ao objeto claptrap3. Portanto, o operador de atribuição é chamado.
-	*/
-	claptrap3 = claptrap1;
+	std::cout << "Copy constructor to create a new ClapTrap object called copy_ana\n";
+	ClapTrap copy_ana = ana;
+	std::cout << std::endl;
 
-	// Chama a função attack no objeto claptrap1, simulando um ataque ao alvo "Target1".
-	claptrap1.attack("Target1");
-	// Chama a função takeDamage no objeto claptrap1, simulando o ClapTrap recebendo 5 pontos de dano.
-	claptrap1.takeDamage(5);
-	/*
-	Chama a função beRepaired no objeto claptrap1, simulando a recuperação do ClapTrap com 3 pontos 
- 	de reparo.
- 	*/ 
-	claptrap1.beRepaired(3);
+	std::cout << "Used the assignment operator to copy attributes from ClapTrap Ana:\n";
+	copy_ana = ana;
+
+	std::cout << "\n ---------- Start Of Feature Testing ---------- \n" << std::endl;
+
+	std::cout << "Step 1 | Start of Ana's attack simulation on Jane:\n" << std::endl;
+
+	ana.attack("Jane");
+	jane.takeDamage(1);
+	std::cout << "Ana´s " << ana << std::endl;
+	std::cout << "Jane´s " << jane << std::endl;
+
+	std::cout << "Step 2 | Jane repairs from the attack and restores hit points:\n" << std::endl;
+	jane.beRepaired(1);
+	jane.attack("Ana");
+	ana.takeDamage(1);
+	std::cout << "Jane´s " << jane << std::endl;
+	std::cout << "Ana´s " << ana << std::endl;
+
+	std::cout << " ------- End Testing With The Destructor ------ \n" << std::endl;
+
 	return (0);
 }
