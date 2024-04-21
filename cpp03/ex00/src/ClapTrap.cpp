@@ -81,9 +81,11 @@ Atacar custa 1 _energyPoints(ponto de energia)
 void	ClapTrap::attack(const std::string& target)
 {
 	if (_hitPoints > 0 && _energyPoints > 0) {
+		_attackDamage++; 
 		std::cout << "ClapTrap " << _name << " attacks " << target << ", causing "
-				<< _attackDamage << " points of damage!" << std::endl;
+				<< (_attackDamage > 1 ? 1 : _attackDamage) << " points of damage!" << std::endl;
 		_energyPoints--;
+		_attackDamage--; 
 	} else {
 		std::cout << "ClapTrap " << _name << " can't attack. No hit points or energy left!" << std::endl;
 	}
@@ -105,6 +107,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	Caso contrário, subtrai-se amount dos pontos de vida restantes _hitPoints.
 	*/	
         _hitPoints = (amount >= _hitPoints) ? 0 : _hitPoints - amount;
+	_attackDamage = amount;
 	/*
 	Após calcular os danos recebidos, uma mensagem é impressa na saída padrão (std::cout) informando 
  	sobre os danos recebidos e os pontos de vida restantes do ClapTrap
@@ -136,4 +139,28 @@ void ClapTrap::beRepaired(unsigned int amount)
     } else {
         std::cout << "ClapTrap " << _name << " can't be repaired. No hit points left!" << std::endl;
     }
+}
+
+unsigned int ClapTrap::getHitPoints(void) const
+{
+    return (_hitPoints);
+}
+
+unsigned int ClapTrap::getEnergyPoints(void) const
+{
+    return (_energyPoints);
+}
+
+unsigned int ClapTrap::getAttackDamage(void) const
+{
+    return (_attackDamage);
+}
+
+// Pega as propriedades atualizadas para passar para o status
+std::ostream& operator<<(std::ostream& os, const ClapTrap& claptrap) {
+    os << "stats:" << std::endl;
+    os << "Hit Points: " << claptrap.getHitPoints() << std::endl;
+    os << "Energy Points: " << claptrap.getEnergyPoints() << std::endl;
+    os << "Attack Damage: " << claptrap.getAttackDamage() << std::endl;
+    return os;
 }
