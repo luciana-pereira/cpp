@@ -25,3 +25,16 @@ Os construtores e destrutores devem imprimir mensagens específicas para o FragT
 Além disso, o FragTrap terá atributos específicos inicializados com valores diferentes dos do ScavTrap, incluindo um aumento no dano de ataque para 30 pontos.
 
 Por fim, o FragTrap também terá sua própria função membro chamada highFivesGuys(), que exibirá uma mensagem solicitando um "high five" no padrão de saída. Mais testes devem ser adicionados para garantir o correto funcionamento da classe FragTrap
+
+#### Exerício 03: Now it´s weird!
+Diretorio: _**ex03**_</br></br>
+Esse exercício tem por finalidade a _**criação de uma classe chamada DiamondTrap**_, que é uma mistura das classes FragTrap e ScavTrap, herdando de ambas. Esta classe terá uma abordagem de herança múltipla, o que significa que herda atributos e métodos de mais de uma classe base.
+
+Os atributos específicos da classe DiamondTrap serão escolhidos de uma das classes pai, enquanto outros atributos serão herdados de outras classes pai.
+
+O exercício pede para manter um atributo privado name na classe DiamondTrap, que é o mesmo nome de um atributo na classe base ClapTrap. Por exemplo, se na classe ClapTrap o atributo é chamado _name, então na classe DiamondTrap também será chamado _name.
+
+Além disso, a classe DiamondTrap terá sua própria _**função membro chamada whoAmI()**_, que exibirá tanto o nome do DiamondTrap quanto o nome do ClapTrap.
+
+**É importante notar que o _objeto ClapTrap dentro de DiamondTrap será criado uma única vez_, o que requer uma abordagem especial.
+
