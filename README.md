@@ -25,7 +25,7 @@ void foo() {
 ponteiros para membros, referências, instrução switch, clique no modulo para saber mais.
 
 - #### [Modulo 02](https://github.com/luciana-pereira/cpp/tree/master/cpp02)
-Os exercicios do módulo 01 contem a implementação de programas que lidam com:</br>
+Os exercicios do módulo 02 contem a implementação de programas que lidam com:</br>
 **1. Polimorfismo ad-hoc**:
 Também conhecido como sobrecarga de funções ou operadores, que é uma forma de polimorfismo em que uma função ou operador tem diferentes implementações dependendo dos tipos de argumentos ou operandos que são passados a ela. Em C++98, a sobrecarga de funções e operadores é uma das formas mais comuns de polimorfismo ad-hoc.
 Na sobrecarga de funções, podemos ter várias funções com o mesmo nome, mas com diferentes listas de parâmetros. Quando chamamos essa função, o compilador determina qual versão da função deve ser chamada com base nos tipos dos argumentos passados. 
@@ -60,7 +60,9 @@ Uma interface em programação é um conjunto de métodos (ou funções) que uma
 
 **⚠️​ Para saber mais sobre o exercicio e sua implementação clique no módulo acima!**
 
-- #### Modulo 05
+- #### [Modulo 05](https://github.com/luciana-pereira/cpp/tree/master/cpp05)
+Os exercicios do módulo 05, versão 10.1, lidara com repetição e tratamento de exceptions.
+
 - #### Modulo 06
 - #### Modulo 07
 - #### Modulo 08
