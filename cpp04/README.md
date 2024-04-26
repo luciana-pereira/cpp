@@ -1,7 +1,7 @@
 <a href="" target="_blank">Potuguês **🇧🇷**</a> | <a href="./README_en.md" target="_blank">English **🇺🇸**</a>
 
 # Modulo 04
-Neste módulo do CPP02, implementamos 4 programas divididos em 4 exercícios:
+Neste módulo do CPP04, implementamos 4 programas divididos em 4 exercícios:
 
 #### Exerício 00: Polymorphism
 Diretorio: _**ex00**_</br></br>
