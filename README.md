@@ -45,7 +45,7 @@ Existem três tipos principais de herança em C++:
 
 3. **Herança Privada (private inheritance):** Nesse tipo de herança, os membros públicos e protegidos da classe base tornam-se membros privados da classe derivada. Os membros privados da classe base não são herdados. A herança privada é usada quando a classe derivada precisa acessar os membros da classe base, mas não deve expor essa relação de herança para o mundo externo.
 
-De forma geral, herança em C++98 permite a reutilização de código, promova a modularidade e facilite a criação de hierarquias de classes, onde classes mais especializadas (derivadas) podem estender o comportamento de classes mais genéricas (base).
+De forma geral, herança em C++98 permite a reutilização de código, promova a modularidade e facilite a criação de hierarquias de classes, onde classes mais especializadas (derivadas) podem estender o comportamento de classes mais genéricas (base). Além de lidar com o conceito de encapsulamento de propiedades e métodos privados, como o protect para que a classe derivada tenha acesso a classe base.
 
 - #### [Modulo 04](https://github.com/luciana-pereira/cpp/tree/master/cpp04)
 Os exercicios do _**módulo 04 da versão 11**_ contem a implementação de programas que lidam com:
