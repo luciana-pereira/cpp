@@ -64,7 +64,15 @@ Uma interface em programação é um conjunto de métodos (ou funções) que uma
 Os exercicios do módulo 05, versão 10.1, lidara com repetição e tratamento de exceptions.
 
 - #### Modulo 06
-- #### Modulo 07
+- 
+- #### [Modulo 07](https://github.com/luciana-pereira/cpp/tree/master/cpp07)
+Os exercicios do _**módulo 07 da versão 7**_ contem a implementação de programas que lidam com Template, que são uma característica que permite escrever código genérico para trabalhar com diferentes tipos de dados sem a necessidade de escrever múltiplas versões da mesma função para cada tipo específico. Um template é um modelo ou molde que define como uma função ou uma classe deve ser, e então, quando essa função ou classe é utilizada, o compilador gera automaticamente as versões necessárias do código para os tipos específicos que são usados.</br>
+**Ex:** 
+```
+template <typename T>
+```
+O T no exemplo acima é um parâmetro de tipo genérico.
+
 - #### Modulo 08
 - #### Modulo 09
 
