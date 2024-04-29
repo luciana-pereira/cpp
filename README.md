@@ -58,13 +58,12 @@ Uma classe abstrata é uma classe que não pode ser instanciada diretamente, mas
 3. **Interfaces:**
 Uma interface em programação é um conjunto de métodos (ou funções) que uma classe pode implementar. Ao contrário das classes abstratas, uma interface não contém implementações de métodos; em vez disso, define apenas os métodos e suas assinaturas. As classes que implementam uma interface devem fornecer uma implementação para todos os métodos definidos pela interface. Interfaces são usadas para definir um contrato que uma classe deve seguir, permitindo que diferentes classes forneçam implementações específicas para um conjunto comum de funcionalidades. Isso promove a flexibilidade e a reutilização de código ao permitir que diferentes classes implementem comportamentos específicos de maneiras diferentes, desde que sigam o contrato definido pela interface. Em linguagens como Java e C#, as interfaces são explicitamente definidas usando a palavra-chave interface. Em C++, as interfaces são frequentemente simuladas usando classes abstratas puras (classes abstratas que contêm apenas métodos virtuais puros, sem dados membros).
 
-**⚠️​ Para saber mais sobre o exercicio e sua implementação clique no módulo acima!**
-
 - #### [Modulo 05](https://github.com/luciana-pereira/cpp/tree/master/cpp05)
 Os exercicios do módulo 05, versão 10.1, lidara com repetição e tratamento de exceptions.
 
-- #### Modulo 06
-- 
+- #### [Modulo 06](https://github.com/luciana-pereira/cpp/tree/master/cpp06)
+Os exercicios do _**módulo 06 da versão 6.2**_ contem a implementação de programas que lidam com conversões de tipo, chamados de **"casts"** em c++98, que tem quatro tipos principais de conversões de tipo.
+
 - #### [Modulo 07](https://github.com/luciana-pereira/cpp/tree/master/cpp07)
 Os exercicios do _**módulo 07 da versão 7**_ contem a implementação de programas que lidam com Template, que são uma característica que permite escrever código genérico para trabalhar com diferentes tipos de dados sem a necessidade de escrever múltiplas versões da mesma função para cada tipo específico. Um template é um modelo ou molde que define como uma função ou uma classe deve ser, e então, quando essa função ou classe é utilizada, o compilador gera automaticamente as versões necessárias do código para os tipos específicos que são usados.</br>
 **Ex:** 
@@ -75,5 +74,7 @@ O T no exemplo acima é um parâmetro de tipo genérico.
 
 - #### Modulo 08
 - #### Modulo 09
+
+**⚠️​ Para saber mais sobre o exercicio e sua implementação clique no módulo!**
 
 Referência: [Documentação C++](https://cplusplus.com/)
