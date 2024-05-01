@@ -24,7 +24,7 @@ Neste exemplo, template <typename T> indica que T é um parâmetro de tipo gené
 
 #### Exerício 01: Iter
 Diretorio: _**ex01**_</br></br>
-Esse exercício lidaremos tabém com funções  template em C++98, bem como o conceito de iterar sobre elementos de um array e aplicar uma função a cada um deles.
+Esse exercício lidaremos tabém com **funções  template** em C++98, bem como o conceito de iterar sobre elementos de um array e aplicar uma função a cada um deles.
 
 Aqui implementaremos uma função template chamada iter que aceita três parâmetros e não retorna nada. Os parâmetros são:
 
@@ -38,7 +38,7 @@ Por exemplo, se tivermos um array de inteiros e uma função que imprime os elem
 
 #### Exerício 02: Array
 Diretorio: _**ex02**_</br></br>
-Neste exercício implementaremos uma classe template chamada Array, que representa um array dinâmico de elementos de tipo T. A classe Array deve ter as seguintes funcionalidades e comportamentos:
+Neste exercício implementaremos uma **classe template chamada Array**, que representa um array dinâmico de elementos de tipo T. A classe Array deve ter as seguintes funcionalidades e comportamentos:
 
 1. Construção sem parâmetros: Cria um array vazio.
 2. Construção com um parâmetro do tipo unsigned int n: Cria um array com n elementos inicializados por padrão.
