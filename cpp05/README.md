@@ -26,3 +26,7 @@ Além disso, a classe Form deve ter os seguintes métodos:
 - Métodos getters para todos os atributos.
 - Um _**método beSigned()**_, que recebe um burocrata como parâmetro e muda o status do formulário para assinado se a nota do burocrata for alta o suficiente. Se a nota for muito baixa, lança uma exceção GradeTooLowException.
 - Um _**método signForm()**_ na classe Bureaucrat, que imprime uma mensagem indicando se o formulário foi assinado com sucesso ou não
+
+#### Exerício 02:  No, you need form 28B, not 28C...
+Diretorio: _**ex02**_</br></br>
+Neste exercício implementaremos a
