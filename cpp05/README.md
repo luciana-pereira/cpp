@@ -29,4 +29,25 @@ Além disso, a classe Form deve ter os seguintes métodos:
 
 #### Exerício 02:  No, you need form 28B, not 28C...
 Diretorio: _**ex02**_</br></br>
-Neste exercício implementaremos a
+Neste exercício expandi o sistema de formulários já existente, adicionando formulários concretos que realizam ações específicas quando executados. Os principais pontos da implementação deste exercício são:
+
+1. **Renomear a classe base:**
+ - A classe base Form deve ser renomeada para AForm e ser uma classe abstrata.
+2. **Adicionar formulários concretos:**
+ - Adicionar três novas classes concretas de formulários: **ShrubberyCreationForm**, **RobotomyRequestForm** e **PresidentialPardonForm**.
+ - Cada classe deve ter atributos privados que representam os requisitos de grau para assinar e executar o formulário, bem como o alvo do formulário.
+ - Cada formulário deve ter uma função para executar sua ação específica.
+3. **Implementar a execução do formulário:**
+ - Adicionar uma função execute(Bureaucrat const & executor) const à classe base AForm para executar a ação do formulário.
+ - Verificar se o formulário foi assinado e se o burocrata que tenta executá-lo possui um grau suficientemente alto.
+ - Decidir se os requisitos devem ser verificados em cada classe concreta ou na classe base.
+4. **Adicionar função de execução ao Bureaucrat:**
+ - Adicionar uma função **executeForm(AForm const & form)** ao **Bureaucrat** para tentar executar o formulário.
+ - Se a execução for bem-sucedida, imprimir uma mensagem indicando isso; caso contrário, imprimir uma mensagem de erro explícita.
+
+O objetivo final é garantir que os formulários possam ser corretamente assinados, executados e que as ações correspondentes sejam realizadas conforme especificado para cada tipo de formulário.
+
+#### Exerício 03:   At least this beats coffee-making
+Diretorio: _**ex03**_</br></br>
+Neste exercício
+   
