@@ -49,5 +49,19 @@ O objetivo final é garantir que os formulários possam ser corretamente assinad
 
 #### Exerício 03:   At least this beats coffee-making
 Diretorio: _**ex03**_</br></br>
-Neste exercício
-   
+Neste exercício implementei a classe **Intern**, que representa um estagiário no contexto do sistema de formulários. O estagiário não possui nome, grau ou características únicas. No entanto, sua função principal é criar formulários quando solicitado pelos burocratas.
+
+A classe **Intern** foi implementada com a função **makeForm()**, que recebe dois parâmetros: o nome de um formulário e o alvo do formulário. Com base nessas informações, o estagiário cria um objeto de formulário correspondente e retorna um ponteiro para ele. Se o nome do formulário passado como parâmetro não existir, o estagiário deve imprimir uma mensagem de erro explícita.
+
+O desafio deste exercício foi implementar a função makeForm() de forma elegante e legível, evitando soluções confusas com muitos blocos if/elseif/else. Em vez disso, fiz de uma forma estruturada e limpa.
+
+Um exemplo de teste e usar a classe **Intern** para criar um objeto Intern, chamar a função makeForm() para criar um formulário específico e, em seguida, utilizar o formulário criado conforme necessário. Por exemplo:
+
+```
+{
+    Intern someRandomIntern;
+    Form* rrf;
+    rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+}
+```
+Neste exemplo, um estagiário chamado someRandomIntern é usado para criar um formulário de solicitação de robotomia direcionado a "Bender".
