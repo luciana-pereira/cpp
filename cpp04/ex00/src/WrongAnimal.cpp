@@ -25,6 +25,7 @@ WrongAnimal::WrongAnimal(const std::string &type) : _type(type)
 WrongAnimal::WrongAnimal(const WrongAnimal &other) : _type(other._type)
 {
 	std::cout << "WrongAnimal copy constructor" << std::endl;
+	_type = other._type;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
