@@ -50,10 +50,10 @@ Animal::~Animal(void)
 
 std::string Animal::getType(void) const
 {
-	return (_type);
+	return (this->_type);
 }
 
 void	Animal::makeSound(void) const
 {
-	std::cout << "..." << std::endl;
+	std::cout << "Animal sound ..." << std::endl;
 }
