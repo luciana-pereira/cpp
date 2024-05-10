@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <iostream>
 #include "../include/AAnimal.hpp"
 #include "../include/Dog.hpp"
 #include "../include/Cat.hpp"
@@ -22,22 +21,22 @@ int	main(void)
 {
 	std::cout << "============================= Type and Sound Test =============================" << std::endl;
 
-	const AAnimal* animal = new AAnimal();
+	// const AAnimal* animal = new AAnimal();
 	const AAnimal* dog = new Dog();
 	const AAnimal* cat = new Cat();
 	std::cout << std::endl;
-    std::cout << "AAnimal type: " << animal->getType() << std::endl;
-    std::cout << "Dog type: " << dog->getType() << std::endl;
-    std::cout << "Cat type: " << cat->getType() << std::endl;
+    	// std::cout << "AAnimal type: " << animal->getType() << std::endl;
+    	std::cout << "Dog type: " << dog->getType() << std::endl;
+    	std::cout << "Cat type: " << cat->getType() << std::endl;
 	std::cout << std::endl;
-	animal->makeSound();
+	// animal->makeSound();
 	dog->makeSound();
 	cat->makeSound();
 	
-    std::cout << "============================= End of Type and Sound Test =====================" << std::endl;
+    	std::cout << "============================= End of Type and Sound Test =====================" << std::endl;
 	
-	delete animal;
-	animal = NULL;
+	// delete animal;
+	// animal = NULL;
 	delete dog;
 	dog = NULL;
 	delete cat;
@@ -48,13 +47,13 @@ int	main(void)
 	const WrongAnimal* wrongAnimal = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();
 	std::cout << std::endl;
-    std::cout << "WrongCat type: " << wrongCat->getType() << std::endl;
-    std::cout << "WrongAnimal type: " << wrongAnimal->getType() << std::endl;
+    	std::cout << "WrongCat type: " << wrongCat->getType() << std::endl;
+    	std::cout << "WrongAnimal type: " << wrongAnimal->getType() << std::endl;
 	std::cout << std::endl;
 	wrongCat->makeSound(); 
 	wrongAnimal->makeSound();
 	
-    std::cout << "============================= End of WrongAnimal Test ========================" << std::endl;
+    	std::cout << "============================= End of WrongAnimal Test ========================" << std::endl;
 	
 	delete wrongAnimal;
 	wrongAnimal = NULL;
@@ -63,7 +62,7 @@ int	main(void)
 
 	std::cout << "============================= Memory Leak Check ===============================" << std::endl;
 	// Additional tests to check for memory leaks
-    {
+    	{
         const int animalCount = 6;
         AAnimal* animalArray[animalCount];
 
@@ -81,7 +80,7 @@ int	main(void)
         // Delete the array of Animal objects
         for (int i = 0; i < animalCount; ++i)
             delete animalArray[i];
-    }
+    	}
 	
 	return (0);
 }
