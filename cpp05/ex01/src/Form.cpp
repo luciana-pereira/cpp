@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 03:39:47 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 03:48:18 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 07:15:58 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ const char* Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low!");
 }
+
+Form::Form(void) : _name("Unnamed"), _signed(false),  _gradeToSign(150), _gradeToExecute(1)
+{}
 
 Form::Form(const std::string& name, int gradeToSign, int gradeToExecute)
 	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
@@ -40,7 +43,7 @@ Form::Form(const std::string& name, int gradeToSign, int gradeToExecute)
 	_signed = false;
 }
 
-Form::Form(const Form& form)
+Form::Form(Form& form)
 	: _name(form._name), _signed(false), _gradeToSign(form._gradeToSign), _gradeToExecute(form._gradeToExecute)
 {
 	try {
@@ -57,7 +60,7 @@ Form::Form(const Form& form)
 	}
 }
 
-Form& Form::operator=(const Form& form)
+Form& Form::operator=(Form& form)
 {
 	try {
 		if (form._gradeToSign > 150 || form._gradeToExecute > 150)
@@ -82,7 +85,7 @@ const	std::string& Form::getName(void) const
 	return (_name);
 }
 
-bool	Form::isSigned(void) const
+bool	Form::getIsSigned(void) const
 {
 	return (_signed);
 }
@@ -97,7 +100,7 @@ int	Form::getGradeToExecute(void) const
 	return (_gradeToExecute);
 }
 
-void	Form::beSigned(const Bureaucrat& bureaucrat)
+void	Form::beSigned(Bureaucrat& bureaucrat)
 {
 	try {
 		if (bureaucrat.getGrade() != -1 && bureaucrat.getGrade() > _gradeToSign)
@@ -114,7 +117,7 @@ std::ostream& operator<<(std::ostream& os, const Form& form)
 {
 	os << "Form: " << form.getName() << ", Grade to Sign: " << form.getGradeToSign()
 		<< ", Grade to Execute: " << form.getGradeToExecute() << ", Signed: ";
-	if (form.isSigned())
+	if (form.getIsSigned())
 		os << "Yes";
 	else
 		os << "No";
