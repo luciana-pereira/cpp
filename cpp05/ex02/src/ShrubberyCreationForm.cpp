@@ -6,22 +6,22 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 06:12:00 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 06:37:15 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/11 21:01:27 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(void)
-	: AForm("ShrubberyCreationForm", 145, 137), _target("default") {}
+	: AForm("ShrubberyCreationForm", 145, 137), _target("Unnamed") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 	: AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& form)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& form)
 	: AForm("ShrubberyCreationForm", 145, 137), _target(form._target) {}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& form)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm& form)
 {
 	AForm::operator=(form);
 	return (*this);
