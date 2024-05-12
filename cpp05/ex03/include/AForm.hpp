@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 03:50:49 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 21:32:07 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:24:49 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <ostream>
 #include <stdexcept>
 #include "Bureaucrat.hpp"
-
-class Bureaucrat;
 
 class	AForm
 {
@@ -40,17 +38,17 @@ public:
 	public:
 		virtual const char* what() const throw();
 	};
-	// AForm(void);
-	AForm(const std::string& name, int gradeToSign, int gradeToExecute);
-	AForm(const AForm& form);
-	AForm& operator=(const AForm& form);
-	virtual ~AForm(void);
-	const std::string& getName(void) const;
+	AForm(void);
+	AForm(AForm& form);
+	AForm(const std::string name, int gradeToSign, int gradeToExecute);
+	AForm&	operator=(AForm& form);
+	virtual	~AForm(void);
+	std::string	getName(void) const;
 	bool	isSigned(void) const;
 	int	getGradeToSign(void) const;
 	int	getGradeToExecute(void) const;
-	void	beSigned(const Bureaucrat& bureaucrat);
-	virtual bool execute(const Bureaucrat& executor) const = 0;
+	void	beSigned(Bureaucrat& bureaucrat);
+	virtual bool execute(Bureaucrat const& executor) const = 0;
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& form);
