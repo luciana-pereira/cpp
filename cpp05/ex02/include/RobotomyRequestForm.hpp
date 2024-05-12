@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:48:17 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 06:10:07 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:28:50 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
-#include <cstdlib>
+#include <stdlib.h>
 #include <ostream>
 
 class	RobotomyRequestForm : public AForm
@@ -24,10 +24,10 @@ private:
 public:
 	RobotomyRequestForm(void);
 	RobotomyRequestForm(const std::string& target);
-	RobotomyRequestForm(const RobotomyRequestForm& form);
-	RobotomyRequestForm& operator=(const RobotomyRequestForm& form);
+	RobotomyRequestForm(RobotomyRequestForm& form);
+	RobotomyRequestForm& operator=(RobotomyRequestForm& form);
 	~RobotomyRequestForm(void);
-	bool	execute(const Bureaucrat& executor) const;
+	bool	execute(Bureaucrat const& executor) const;
 };
 
 #endif
