@@ -32,11 +32,11 @@ Diretorio: _**ex02**_</br></br>
 Neste exercício expandi o sistema de formulários já existente, adicionando formulários concretos que realizam ações específicas quando executados. Os principais pontos da implementação deste exercício são:
 
 1. **Renomear a classe base:**
- - A classe base Form deve ser renomeada para AForm e ser uma classe abstrata.
+ - A classe base Form deve ser renomeada para _**AForm e ser uma classe abstrata**_.
 2. **Adicionar formulários concretos:**
  - Adicionar três novas classes concretas de formulários: **ShrubberyCreationForm**, **RobotomyRequestForm** e **PresidentialPardonForm**.
- - Cada classe deve ter atributos privados que representam os requisitos de grau para assinar e executar o formulário, bem como o alvo do formulário.
- - Cada formulário deve ter uma função para executar sua ação específica.
+ - Cada classe deve ter atributos privados que representam os requisitos de grau (_grade) para assinar (_gradeToSign) e executar (_gradeToExecute) o formulário, bem como o alvo (_target) do formulário.
+ - Cada formulário, cada classe concreta deve ter uma função para executar sua ação específica como o _**bool	execute(Bureaucrat const& executor) const;**_, porem e a função executeForm da classe Bureaucrat é responsável por executar as formas (forms) dasclasses concretas que foram assinadas por um burocrata. O que acontece em Bureaucrat::executeForm é que ele chama a função execute da classe correspondente, passando o próprio burocrata como argument. E é na etapa do _**form.execute(*this)**_ nesta função que é chamadoa a função execute e passando o burocrata atual como argumento.
 3. **Implementar a execução do formulário:**
  - Adicionar uma função execute(Bureaucrat const & executor) const à classe base AForm para executar a ação do formulário.
  - Verificar se o formulário foi assinado e se o burocrata que tenta executá-lo possui um grau suficientemente alto.
@@ -51,7 +51,7 @@ O objetivo final é garantir que os formulários possam ser corretamente assinad
 Diretorio: _**ex03**_</br></br>
 Neste exercício implementei a classe **Intern**, que representa um estagiário no contexto do sistema de formulários. O estagiário não possui nome, grau ou características únicas. No entanto, sua função principal é criar formulários quando solicitado pelos burocratas.
 
-A classe **Intern** foi implementada com a função **makeForm()**, que recebe dois parâmetros: o nome de um formulário e o alvo do formulário. Com base nessas informações, o estagiário cria um objeto de formulário correspondente e retorna um ponteiro para ele. Se o nome do formulário passado como parâmetro não existir, o estagiário deve imprimir uma mensagem de erro explícita.
+A classe **Intern** foi implementada com a função **makeForm()**, que recebe dois parâmetros: o nome de um formulário e o alvo(_target) do formulário. Com base nessas informações, o estagiário cria um objeto de formulário correspondente e retorna um ponteiro para ele. Se o nome do formulário passado como parâmetro não existir, o estagiário deve imprimir uma mensagem de erro explícita.
 
 O desafio deste exercício foi implementar a função makeForm() de forma elegante e legível, evitando soluções confusas com muitos blocos if/elseif/else. Em vez disso, fiz de uma forma estruturada e limpa.
 
