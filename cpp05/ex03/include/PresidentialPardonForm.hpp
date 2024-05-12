@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:43:55 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 19:44:59 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:48:47 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 class	PresidentialPardonForm : public AForm
 {
 private:
-	const std::string _target;
+	std::string _target;
 public:
 	PresidentialPardonForm(void);
-	PresidentialPardonForm(const std::string& target);
-	PresidentialPardonForm(const PresidentialPardonForm& form);
-	PresidentialPardonForm& operator=(const PresidentialPardonForm& form);
-	~PresidentialPardonForm(void);
-	bool	execute(const Bureaucrat& executor) const;
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(PresidentialPardonForm& form);
+	PresidentialPardonForm& operator=(PresidentialPardonForm& form);
+	virtual ~PresidentialPardonForm(void);
+	virtual bool	execute(Bureaucrat const& executor) const;
 };
 
 #endif
