@@ -51,7 +51,7 @@ Neste arquivo tambem utilizo de _**função/métodos auxiliares**_ como:
 - **std::fixed:** Este manipulador de fluxo de saída é usado para imprimir números em notação decimal fixa. Ele é utilizado em conjunto com std::setprecision() para controlar a formatação da saída de números float e double.
 
 #### Exerício 01:   Serialization
-Diretorio: _**ex00**_</br></br>
+Diretorio: _**ex01**_</br></br>
 Neste exercício, implementei a classe chamada Serializer, que será responsável por serializar e deserializar ponteiros de uma estrutura de dados chamada Data.
 
 ***Serialização** e **desserialização*** são processos importantes em ciência da computação e engenharia de software que envolvem a conversão de dados em um formato que pode ser facilmente armazenado, transmitido ou manipulado de alguma forma. Aqui está uma explicação mais detalhada de cada conceito:
@@ -80,5 +80,8 @@ No main, escrevialguns testes para a classe Serializer, e verificar se funciona 
 
 **Definição de entregue**
 Além dos arquivos relacionados à implementação da classe Serializer, também é necessário entregar os arquivos relacionados à estrutura de dados Data.
+
+**funções externas**
+- **reinterpret_cast:** Uma operação usada para converter um ponteiro de um tipo para outro, sem a realização de qualquer verificação de tipo ou conversão de valor. É uma operação poderosa, mas também perigosa, pois permite que você force um tipo de ponteiro a ser tratado como outro tipo, mesmo que os tipos não sejam compatíveis.
 
 Em resumo, neste exercício tem atingi o objetivo de aprender a lidar com a implementação de serialização e desserialização de ponteiros de objetos de uma determinada estrutura de dados, garantindo que os dados possam ser transmitidos e reconstruídos corretamente em diferentes contextos.
