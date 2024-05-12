@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:19:53 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 07:34:28 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/11 19:24:47 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 #include <iostream>
 #include <stdexcept>
-
-#include "AForm.hpp"
-
-class AForm;
 
 class	Bureaucrat
 {
@@ -34,10 +30,10 @@ public:
 	public:
 		const char* what() const throw();
 	};
-	Bureaucrat();
+	Bureaucrat(void);
+	Bureaucrat(Bureaucrat& bureaucrat);
 	Bureaucrat(const std::string& name, int grade);
-	Bureaucrat(const Bureaucrat& bureaucrat);
-	Bureaucrat& operator=(const Bureaucrat& bureaucrat);
+	Bureaucrat& operator=(Bureaucrat& bureaucrat);
 	~Bureaucrat(void);
 	const std::string& getName(void) const;
 	int		getGrade(void) const;
