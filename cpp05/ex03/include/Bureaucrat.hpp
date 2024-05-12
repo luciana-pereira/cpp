@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:19:53 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 21:32:30 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:45:49 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,17 @@ public:
 		virtual const char* what() const throw();
 	};
 	Bureaucrat(void);
-	Bureaucrat(const std::string& name, int grade);
-	Bureaucrat(const Bureaucrat& bureaucrat);
-	Bureaucrat& operator=(const Bureaucrat& bureaucrat);
+	Bureaucrat(Bureaucrat& bureaucrat);
+	Bureaucrat(std::string name, int grade);
+	Bureaucrat& operator=(Bureaucrat& bureaucrat);
 	~Bureaucrat(void);
-	const std::string& getName(void) const;
+	std::string getName(void) const;
 	int		getGrade(void) const;
 	void	incrementGrade(void);
 	void	decrementGrade(void);
-	void	executeForm(const AForm &form);
+	void	signForm(AForm &form);
 	void	checkSignedForm(AForm &form);
+	void	executeForm(AForm &form);
 };
 
 std::ostream	&operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
