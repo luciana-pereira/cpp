@@ -6,19 +6,16 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 03:50:49 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 07:55:14 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:02:59 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include <ostream>
-#include <stdexcept>
 #include "Bureaucrat.hpp"
-
-class Bureaucrat;
 
 class	AForm
 {
@@ -40,17 +37,17 @@ public:
 	public:
 		const char* what() const throw();
 	};
-	// AForm(void);
+	AForm(void);
+	AForm(AForm& form);
 	AForm(const std::string& name, int gradeToSign, int gradeToExecute);
-	AForm(const AForm& form);
-	AForm& operator=(const AForm& form);
+	AForm& operator=(AForm& form);
 	~AForm(void);
-	const std::string& getName(void) const;
+	const	std::string& getName(void) const;
 	bool	isSigned(void) const;
 	int	getGradeToSign(void) const;
 	int	getGradeToExecute(void) const;
 	void	beSigned(const Bureaucrat& bureaucrat);
-	virtual bool execute(const Bureaucrat& executor) const = 0;
+	virtual bool execute(Bureaucrat const& executor) const = 0;
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& form);
