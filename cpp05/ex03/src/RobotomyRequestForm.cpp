@@ -35,7 +35,12 @@ bool	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 		if (executor.getGrade() > getGradeToExecute() || executor.getGrade() < 0)
 			throw AForm::GradeTooLowException();
 		std::cout << "blip... bliiiiiiiiiiiiiiiiiiiiiiiiiiiiip..." << std::endl;
+		// inicializa o gerador de números aleatórios.
 		std::srand(time(NULL));
+		/*
+  		Se o número gerado for par (ou seja, (std::rand() % 2) == 0), o método exibe uma mensagem indicando que a robotomia foi realizada com 
+    		sucesso no alvo _target pelo burocrata executor. Caso contrário, exibe uma mensagem indicando que a robotomia falhou
+  		*/
 		if ((std::rand() % 2) == 0)
 			std::cout << _target << " has been robotomized successfully by " << executor.getName() << std::endl;
 		else
