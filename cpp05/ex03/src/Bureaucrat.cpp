@@ -6,42 +6,26 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:19:02 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 07:49:23 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:33:13 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Bureaucrat.hpp"
 #include "../include/AForm.hpp" 
 
-const char* Bureaucrat::GradeTooHighException::what() const throw()
+const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("Grade is too high!");
+	return ("Grade is too high!");
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const throw()
+const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("Grade is too low!");
+	return ("Grade is too low!");
 }
 
-Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(150)
-{
-	try {
-		if (_grade > 150)
-			throw Bureaucrat::GradeTooLowException();
-		else if (_grade < 1)
-			throw Bureaucrat::GradeTooHighException();
-	}
-	catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
-		_grade = -1;
-	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << e.what() << std::endl;
-		_grade = -1;
-	}
-}
+Bureaucrat::Bureaucrat(void) : _name("Unnamed"), _grade(150)
+{ }
 
-Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
 	try {
 		if (grade > 150)
@@ -59,7 +43,7 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat)
+Bureaucrat::Bureaucrat(Bureaucrat &bureaucrat)
 {
 	try {
 		if (bureaucrat.getGrade() > 150)
@@ -78,7 +62,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat)
 	}
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &bureaucrat)
+Bureaucrat &Bureaucrat::operator=(Bureaucrat &bureaucrat)
 {
 	try {
 		if (bureaucrat.getGrade() > 150)
@@ -100,7 +84,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &bureaucrat)
 
 Bureaucrat::~Bureaucrat(void) {}
 
-const std::string& Bureaucrat::getName() const
+std::string Bureaucrat::getName() const
 {
 	return (_name);
 }
@@ -157,7 +141,7 @@ void	Bureaucrat::checkSignedForm(AForm &form)
 	}
 }
 
-void Bureaucrat::executeForm(const AForm &form)
+void	Bureaucrat::executeForm(AForm &form)
 {
 	try {
 		if (!form.isSigned())
@@ -173,7 +157,7 @@ void Bureaucrat::executeForm(const AForm &form)
 	}
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return (os);
