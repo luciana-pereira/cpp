@@ -6,7 +6,7 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 03:39:47 by lucperei          #+#    #+#             */
-/*   Updated: 2024/02/17 07:32:44 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:30:40 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,105 +27,129 @@ const char* AForm::FormIsNotSignedException::what() const throw()
 	return ("Form is not signed!");
 }
 
-// AForm::AForm(void)
-//     : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
-// {}
 
-AForm::AForm(const std::string& name, int gradeToSign, int gradeToExecute)
-    : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
+// Construtor padrão da classe AForm. Ele inicializa os membros _name, _signed, _gradeToSign e _gradeToExecute com valores padrão.
+AForm::AForm(void)
+	: _name("Unnamed"), _signed(false), _gradeToSign(150), _gradeToExecute(1)
+{}
+
+/*
+Construtor sobrecarregado da classe AForm. Ele permite inicializar um objeto AForm com valores 
+específicos para _name, _gradeToSign e _gradeToExecute.
+*/
+AForm::AForm(std::string name, int gradeToSign, int gradeToExecute)
+	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-    try {
-        if (gradeToSign > 150 || gradeToExecute > 150)
-            throw AForm::GradeTooLowException();
-        else if (gradeToSign < 1 || gradeToExecute < 1)
-            throw AForm::GradeTooHighException();
-    }
-    catch (AForm::GradeTooLowException &e) {
-        std::cout << e.what() << std::endl;
-    }
-    catch (AForm::GradeTooHighException &e) {
-        std::cout << e.what() << std::endl;
-    }
-    _signed = false;
+	try {
+		if (gradeToSign > 150 || gradeToExecute > 150)
+			throw AForm::GradeTooLowException();
+		else if (gradeToSign < 1 || gradeToExecute < 1)
+			throw AForm::GradeTooHighException();
+	}
+	catch (AForm::GradeTooLowException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooHighException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	_signed = false;
 }
 
-AForm::AForm(const AForm& form)
-    : _name(form._name), _signed(false), _gradeToSign(form._gradeToSign), _gradeToExecute(form._gradeToExecute)
+/*
+Construtor de cópia da classe AForm. Ele cria uma cópia de outro objeto AForm, copiando os valores 
+dos membros _name, _signed, _gradeToSign e _gradeToExecute.
+*/
+AForm::AForm(AForm& form)
+	: _name(form._name), _signed(false), _gradeToSign(form._gradeToSign), _gradeToExecute(form._gradeToExecute)
 {
-    try {
-        if (form._gradeToSign > 150 || form._gradeToExecute > 150)
-            throw AForm::GradeTooLowException();
-        else if (form._gradeToSign < 1 || form._gradeToExecute < 1)
-            throw AForm::GradeTooHighException();
-    }
-    catch (AForm::GradeTooLowException &e) {
-        std::cout << e.what() << std::endl;
-    }
-    catch (AForm::GradeTooHighException &e) {
-        std::cout << e.what() << std::endl;
-    }
+	try {
+		if (form._gradeToSign > 150 || form._gradeToExecute > 150)
+			throw AForm::GradeTooLowException();
+		else if (form._gradeToSign < 1 || form._gradeToExecute < 1)
+			throw AForm::GradeTooHighException();
+	}
+	catch (AForm::GradeTooLowException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooHighException &e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
-AForm& AForm::operator=(const AForm& form)
+/*
+Operador de atribuição da classe AForm. Ele permite atribuir o valor de outro objeto AForm a este objeto, copiando os valores dos membros 
+_name, _gradeToSign e _gradeToExecute.
+*/
+AForm& AForm::operator=(AForm& form)
 {
-    try {
-        if (form._gradeToSign > 150 || form._gradeToExecute > 150)
-            throw AForm::GradeTooLowException();
-        else if (form._gradeToSign < 1 || form._gradeToExecute < 1)
-            throw AForm::GradeTooHighException();
-        _signed = false;
-    }
-    catch (AForm::GradeTooLowException &e) {
-        std::cout << e.what() << std::endl;
-    }
-    catch (AForm::GradeTooHighException &e) {
-        std::cout << e.what() << std::endl;
-    }
-    return *this;
+	try {
+		if (form._gradeToSign > 150 || form._gradeToExecute > 150)
+			throw AForm::GradeTooLowException();
+		else if (form._gradeToSign < 1 || form._gradeToExecute < 1)
+			throw AForm::GradeTooHighException();
+		_signed = false;
+	}
+	catch (AForm::GradeTooLowException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooHighException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	return (*this);
 }
 
+// Destrutor da classe AForm. Ele não realiza nenhuma operação específica além de ser definido.
 AForm::~AForm(void) {}
 
-const    std::string& AForm::getName(void) const
+std::string AForm::getName(void) const
 {
-    return (_name);
+	return (_name);
 }
 
-bool    AForm::isSigned(void) const
+bool	AForm::isSigned(void) const
 {
-    return (_signed);
+	return (_signed);
 }
 
-int    AForm::getGradeToSign(void) const
+// Método retorna a classificação necessária para assinar o formulário.
+int	AForm::getGradeToSign(void) const
 {
-    return (_gradeToSign);
+	return (_gradeToSign);
+}
+ // Método retorna a classificação necessária para executar o formulário.
+int	AForm::getGradeToExecute(void) const
+{
+	return (_gradeToExecute);
 }
 
-int    AForm::getGradeToExecute(void) const
+/*
+Método permite que um burocrata assine o formulário. Ele verifica se o burocrata tem uma classificação adequada 
+para assinar o formulário e, em caso afirmativo, define _signed como verdadeiro.
+*/
+void	AForm::beSigned(Bureaucrat& bureaucrat)
 {
-    return (_gradeToExecute);
+	try {
+		if (bureaucrat.getGrade() != -1 && bureaucrat.getGrade() > _gradeToSign)
+			throw AForm::GradeTooLowException();
+		_signed = true;
+	}
+	catch (AForm::GradeTooLowException &e) {
+		std::cout << e.what() << std::endl;
+		_signed = false;
+	}
 }
 
-void    AForm::beSigned(const Bureaucrat& bureaucrat)
+/*
+Função de sobrecarga do operador de inserção <<, que permite imprimir as informações do formulário em um fluxo de saída, como std::cout. 
+Ele imprime o nome do formulário, a classificação necessária para assinar, a classificação necessária para executar e se o formulário está assinado ou não.
+*/
+std::ostream&	operator<<(std::ostream& os, const AForm& form)
 {
-    try {
-        if (bureaucrat.getGrade() != -1 && bureaucrat.getGrade() > _gradeToSign)
-            throw AForm::GradeTooLowException();
-        _signed = true;
-    }
-    catch (AForm::GradeTooLowException &e) {
-        std::cout << e.what() << std::endl;
-        _signed = false;
-    }
-}
-
-std::ostream& operator<<(std::ostream& os, const AForm& form)
-{
-    os << "Form: " << form.getName() << ", Grade to Sign: " << form.getGradeToSign()
-        << ", Grade to Execute: " << form.getGradeToExecute() << ", Signed: ";
-    if (form.isSigned())
-        os << "Yes";
-    else
-        os << "No";
-    return os;
+	os << "Form: " << form.getName() << ", Grade to Sign: " << form.getGradeToSign()
+		<< ", Grade to Execute: " << form.getGradeToExecute() << ", Signed: ";
+	if (form.isSigned())
+		os << "Yes";
+	else
+		os << "No";
+	return (os);
 }
