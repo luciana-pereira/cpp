@@ -71,6 +71,18 @@ Mas os principais pontos da implentação do exercicio é:
 - A classe tem de conter dois métodos estáticos:
   - <b>uintptr_t serialize(Data* ptr):</b> Recebe um ponteiro para um objeto Data e o converte para o tipo de inteiro sem sinal uintptr_t.
   - <b>Data* deserialize(uintptr_t raw):</b> Recebe um parâmetro do tipo inteiro sem sinal uintptr_t e o converte de volta para um ponteiro para um objeto Data.
+
+**Função serialize:**
+uintptr_t Serializer::serialize(Data* ptr): Esta função aceita um ponteiro para um objeto do tipo Data como argumento e retorna um valor do tipo uintptr_t. uintptr_t é um tipo inteiro sem sinal grande o suficiente para armazenar o valor de um ponteiro.
+
+return (reinterpret_cast<uintptr_t>(ptr));: Aqui, o ponteiro ptr é reinterpretado como um valor uintptr_t e retornado. Isso significa que o endereço de memória apontado por ptr é convertido em um valor inteiro sem sinal e retornado. Isso é útil para "serializar" o ponteiro, ou seja, transformá-lo em um formato que pode ser facilmente armazenado ou transmitido.
+
+**Função deserialize:**
+Data* Serializer::deserialize(uintptr_t raw): Esta função aceita um valor uintptr_t como argumento e retorna um ponteiro para um objeto do tipo Data.
+
+return (reinterpret_cast<Data*>(raw));: Aqui, o valor raw é reinterpretado como um ponteiro para Data* e retornado. Isso significa que o valor uintptr_t é convertido de volta em um ponteiro para Data, permitindo que o objeto original apontado pelo ponteiro seja acessado novamente. Essa função é útil para "desserializar" um valor uintptr_t de volta para um ponteiro de objeto original.
+
+Essas funções podem ser úteis em sistemas que precisam serializar e desserializar ponteiros para objetos de dados, como em sistemas de comunicação ou armazenamento de dados onde os ponteiros precisam ser transmitidos ou armazenados de forma eficiente.
     
 **Teste da classe Serializer:**
 No main, escrevialguns testes para a classe Serializer, e verificar se funciona conforme o esperado no subject:
