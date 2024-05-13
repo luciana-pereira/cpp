@@ -85,3 +85,26 @@ Além dos arquivos relacionados à implementação da classe Serializer, também
 - **reinterpret_cast:** Uma operação usada para converter um ponteiro de um tipo para outro, sem a realização de qualquer verificação de tipo ou conversão de valor. É uma operação poderosa, mas também perigosa, pois permite que você force um tipo de ponteiro a ser tratado como outro tipo, mesmo que os tipos não sejam compatíveis.
 
 Em resumo, neste exercício tem atingi o objetivo de aprender a lidar com a implementação de serialização e desserialização de ponteiros de objetos de uma determinada estrutura de dados, garantindo que os dados possam ser transmitidos e reconstruídos corretamente em diferentes contextos.
+
+#### Exerício 02:   Conversion of scalar types
+Diretorio: _**ex02**_</br></br>
+Neste exercício, fiz a manipulação de classes base e derivadas, bem como a identificação do tipo real de um objeto em tempo de execução _**sem usar a biblioteca typeinfo, que e proibida**_.
+
+Desta forma, implementei uma classe base chamada Base com um destrutor virtual público que é uma função especial em uma classe que é chamada quando um objeto dessa classe é destruído. Em seguida, criar três classes vazias chamadas A, B e C que herdam publicamente da classe Base.
+
+**Destrutor virtual público:**
+- **Destrutor:** Um destrutor é uma função membro especial em uma classe que é chamada automaticamente quando um objeto dessa classe é destruído. O destruidor é responsável por liberar recursos alocados dinamicamente (como memória) ou realizar qualquer limpeza necessária antes que o objeto seja removido da memória.
+
+- **Virtual:** Quando um destruidor é declarado como virtual, isso significa que ele pode ser substituído em classes derivadas. Isso é importante quando você tem uma hierarquia de classes e deseja garantir que os destruidores das classes derivadas sejam chamados corretamente quando um objeto polimórfico é destruído.
+
+- **Público:** Um destruidor público é acessível a partir de qualquer lugar do programa onde um objeto da classe é acessível. Isso significa que qualquer código que tenha acesso a um objeto da classe pode chamar o destruidor.
+
+De forma geral, quando defino um destruidor virtual público em uma classe base e cria objetos dessa classe por meio de ponteiros, ele permite que os destruidores das classes derivadas sejam chamados corretamente ao excluir esses objetos por meio de ponteiros da classe base. Isso é crucial para garantir a limpeza adequada de recursos alocados dinamicamente em objetos polimórficos e evitar vazamentos de memória.
+
+**As funções implementadas são:**
+
+- **Base * generate(void);:** Esta função instancia aleatoriamente um objeto das classes A, B ou C e retornará um ponteiro para a classe base Base.
+
+- <b>void identify(Base* p);:</b> Esta função imprimi o tipo real do objeto apontado por p, ou seja, se é um objeto da classe A, B ou C.
+
+- **void identify(Base& p);:** Esta função também imprimi o tipo real do objeto referenciado por p, sem usar ponteiros dentro da função.
