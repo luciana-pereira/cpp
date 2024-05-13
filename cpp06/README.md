@@ -98,6 +98,10 @@ Além dos arquivos relacionados à implementação da classe Serializer, também
 
 Em resumo, neste exercício tem atingi o objetivo de aprender a lidar com a implementação de serialização e desserialização de ponteiros de objetos de uma determinada estrutura de dados, garantindo que os dados possam ser transmitidos e reconstruídos corretamente em diferentes contextos.
 
+<b>**Ou seja, ele a conversão de tipo, e para garantir a funcionalidade e confirme os endereços do objeto original e do objeto desserializado devem ser os mesmos e os valores dos membros dos objetos também devem ser os mesmos. A única diferença é que o tipo do objeto original é Data, enquanto o tipo do objeto desserializado é Data*.
+Portanto, se os endereços e os valores dos membros dos objetos forem os mesmos, isso sugere que a serialização e a desserialização estão ocorrendo corretamente. A única diferença entre os objetos é que um é um objeto real (Data), enquanto o outro é um ponteiro para esse objeto (Data*).
+</b>
+
 #### Exerício 02:   Conversion of scalar types
 Diretorio: _**ex02**_</br></br>
 Neste exercício, fiz a manipulação de classes base e derivadas, bem como a identificação do tipo real de um objeto em tempo de execução _**sem usar a biblioteca typeinfo, que e proibida**_.
