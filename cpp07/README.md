@@ -1,7 +1,53 @@
 <a href="" target="_blank">Potuguês **🇧🇷**</a> | <a href="./README_en.md" target="_blank">English **🇺🇸**</a>
 
 # Modulo 07
-Neste módulo do CPP07, implementamos 3 programas divididos em 3 exercícios:
+Neste módulo do CPP07, implementamos 3 programas divididos em 3 exercícios que lidam com _**templates**_:
+
+Existem três tipos principais: _**modelos de função**_, _**modelos de classe**_ e _**modelos de membro de classe**_. 
+
+1. **Modelos de Função**: São modelos que permitem definir uma _**função genérica que pode aceitar tipos de dados diferentes**_, _**utilizados no ex00 e ex01**_. Por exemplo:
+
+```cpp
+template<typename T>
+T soma(T a, T b) {
+    return a + b;
+}
+```
+
+2. **Modelos de Classe**: Permitem definir classes genéricas. Isso é útil quando você precisa criar uma classe que pode trabalhar com diferentes tipos de dados. Por exemplo:
+
+```cpp
+template<typename T>
+class Pilha {
+    // Implementação da classe
+};
+```
+
+3. **Modelos de Membro de Classe**: São modelos dentro de uma classe que podem ter um ou mais parâmetros de modelo que não são da classe, _**utilizados no ex02**_. Por exemplo:
+
+```cpp
+template<typename T>
+class Conta {
+    T saldo;
+public:
+    void depositar(T valor);
+    T obterSaldo();
+};
+
+template<typename T>
+void Conta<T>::depositar(T valor) {
+    saldo += valor;
+}
+
+template<typename T>
+T Conta<T>::obterSaldo() {
+    return saldo;
+}
+```
+
+**Esses são os tipos básicos de templates em C++98, que fornecem uma maneira poderosa de escrever código genérico e reutilizável.
+
+## Sobre a implementação:
 
 #### Exerício 00: Start with a few functions
 Diretorio: _**ex00**_</br></br>
