@@ -46,6 +46,21 @@ O STL é composto por três componentes principais:
 
 2. **Teste main:** O teste main demonstra o uso da função easyfind com dois tipos de contêineres diferentes (std::vector e std::list), como solicitado pelo exercício. Ele preenche os contêineres com valores e testa a função easyfind para encontrar ou não encontrar os valores especificados, conforme descrito no objetivo do exercício. Além disso, o teste também demonstra o tratamento de exceções quando o valor não é encontrado no contêiner, **ele so lida com conteiners de inteiro porque a busca e atraves de um valor de int**.
 
+<b>**Importante: Este exercício é um template de função e não precisa estar na forma canonica ortodoxa. Em resumo, sua _o easyfind é um wrapper para a função std::find_, que por sua vez não envolve gerenciamento de recursos complexos. Assim, para este caso específico, não é necessária uma implementação explícita dos métodos da forma canônica ortodoxa. Não há nenhuma classe além da classe de template easyfind, que é uma função, não uma classe.</b>
+
 #### Exercício 01: Span
 Diretorio: _**ex01**_</br></br>
-Neste exercício escrevi uma classe chamada **Span** que pode armazenar um máximo de N inteiros, onde N é passado como parâmetro para o construtor da classe. A classe Span deve ter os seguintes requisitos:
+Neste exercício escrevi uma classe chamada **Span** que pode armazenar um máximo de N inteiros, onde N é passado como parâmetro para o construtor da classe. Para cumprir os requisitos do subject (pdf) foi criado os seguintes métodos na classe Span:
+
+1. **Método addNumber():** Este método permite adicionar um único número ao Span. Se houver já N elementos armazenados e uma tentativa de adicionar um novo elemento for feita, a classe deve lançar uma exceção.
+2. **Método shortestSpan():** Este método encontra o menor intervalo (ou diferença) entre todos os números armazenados no Span e o retorna. Se não houver números armazenados ou apenas um número, nenhum intervalo pode ser encontrado, portanto, a classe deve lançar uma exceção.
+3. **Método longestSpan():** Este método encontra o maior intervalo (ou diferença) entre todos os números armazenados no Span e o retorna. Novamente, se não houver números armazenados ou apenas um número, nenhum intervalo pode ser encontrado, então a classe deve lançar uma exceção.
+
+De forma geral, a classe Span armazenara os números e fornecera métodos para calcular o menor e o maior intervalo entre esses números, além de permitir adicionar números de forma eficiente utilizando um intervalo de iteradores.
+
+
+
+
+
+
+
