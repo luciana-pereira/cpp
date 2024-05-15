@@ -72,7 +72,7 @@ template <typename T>
 ```
 O T no exemplo acima é um parâmetro de tipo genérico.
 
-- #### [Modulo 08](https://github.com/luciana-pereira/cpp/tree/master/cpp08
+- #### [Modulo 08](https://github.com/luciana-pereira/cpp/tree/master/cpp08)
 Os exercicios do _**módulo 08 da versão 8**_ contem a implementação de programas que lidam com **"templated containers**, **iterators** e **algorithms**.
 
 - #### [Modulo 09](https://github.com/luciana-pereira/cpp/tree/master/cpp09)
