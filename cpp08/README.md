@@ -3,14 +3,53 @@
 # Modulo 08
 Neste módulo do CPP08, implementamos 3 programas divididos em 3 exercícios que podemos utilizar o STL, Containers e Algorithm, além de lidam com:
 
-1. **Templates Containers:**
+**Estruturas de dados para armazenar e manipular coleções de elementos**</br>
+1. **Array (vetor):** </br>
+Arrays são estruturas de dados simples que armazenam uma coleção fixa de elementos do mesmo tipo em ordem sequencial na memória. Em C++98, os arrays têm um tamanho fixo que deve ser especificado em tempo de compilação.
+
+```
+int myArray[5]; // Declarando um array de inteiros com tamanho 5
+```
+
+2. **Vector (vetor dinâmico):** </br>
+Os vetores dinâmicos são semelhantes aos arrays, mas têm tamanho dinâmico, o que significa que podem crescer ou diminuir conforme necessário. Em C++98, muitas vezes as pessoas usavam arrays dinâmicos ou implementavam seus próprios vetores dinâmicos, já que a STL ainda não era tão amplamente adotada.
+
+```
+#include <vector>
+std::vector<int> myVector; // Declarando um vetor dinâmico de inteiros
+```
+
+3. **List (lista duplamente encadeada):** </br>
+Uma lista duplamente encadeada é uma estrutura de dados que armazena uma coleção de elementos onde cada elemento tem um ponteiro para o próximo e para o anterior na lista. Isso permite inserções e remoções eficientes em qualquer posição da lista.
+
+```
+#include <list>
+std::list<int> myList; // Declarando uma lista de inteiros
+```
+
+4. **Map (mapa):** </br>
+Um mapa é uma estrutura de dados que armazena uma coleção de pares chave-valor, onde cada chave é única. Os mapas são geralmente implementados usando árvores binárias de busca balanceadas, como árvores rubro-negras.
+```
+#include <map>
+std::map<std::string, int> myMap; // Declarando um mapa de string para int
+```
+
+5. **Set (conjunto):** </br>
+Um conjunto é uma coleção de elementos únicos, onde a ordem dos elementos geralmente não é importante. Internamente, os conjuntos geralmente são implementados usando árvores binárias de busca balanceadas.
+
+```
+#include <set>
+std::set<int> mySet; // Declarando um conjunto de inteiros
+```
+
+6. **Templates Containers:** </br>
 _**Templates Containers ou contêineres com modelos, são estruturas de dados que podem armazenar e organizar coleções de elementos**_. Esses contêineres são "templated" porque são criados usando modelos de classes, permitindo que sejam parametrizados por tipo. Alguns exemplos comuns de contêineres em C++98 incluem _**std::vector, std::list, std::map, e std::set**_.
 
-2. **Iterators:**
+7. **Iterators:** </br>
 _**Os iteradores são objetos que fornecem uma maneira de acessar sequencialmente os elementos dentro de um contêiner**_. Eles são essenciais para percorrer os elementos de um contêiner e podem ser usados para ler ou modificar os elementos. Em C++98, os iteradores são conceitualmente separados em cinco categorias: input iterators, output iterators, forward iterators, bidirectional iterators e random access iterators, cada um oferecendo diferentes funcionalidades e garantias de desempenho
 
-3. **Algorithms:**
-_**Os algoritmos são funções que operam em sequências de elementos**_. Esses algoritmos podem ser aplicados a contêineres, usando iteradores para percorrer os elementos. Alguns exemplos de algoritmos comuns incluem std::sort, std::find, std::transform, e std::accumulate. Esses algoritmos fornecem funcionalidades para ordenar elementos, buscar por elementos específicos, transformar elementos de uma forma específica, e realizar operações de redução em uma sequência, respectivamente.
+8. **Algorithms:** </br>
+_**Os algoritmos são funções que operam em sequências de elementos**_. Esses algoritmos podem ser aplicados a contêineres, usando iteradores para percorrer os elementos. Alguns _**exemplos de algoritmos comuns incluem std::sort, std::find, std::transform, e std::accumulate.**_ Esses algoritmos fornecem funcionalidades para ordenar elementos, buscar por elementos específicos, transformar elementos de uma forma específica, e realizar operações de redução em uma sequência, respectivamente.
 
 De forma geral, em conjunto, os contêineres, iteradores e algoritmos fornecem uma maneira poderosa e flexível de manipular e processar dados em C++98. Eles são a base da Biblioteca Padrão do C++, permitindo aos desenvolvedores escrever código eficiente e expressivo para uma ampla gama de tarefas.
 
