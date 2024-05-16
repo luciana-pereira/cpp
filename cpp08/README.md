@@ -62,8 +62,8 @@ De forma geral, a classe Span armazenara os números e fornecera métodos para c
 Diretorio: _**ex02**_</br></br>
 Neste exercício escrevi uma classe chamada MutantStack que estende a funcionalidade do contêiner std::stack fornecendo iteradores, tornando-o iterável.
 
-O std::stack é uma estrutura de dados que fornece uma interface de pilha (LIFO - Last In, First Out) sobre outro contêiner subjacente da STL, geralmente um std::deque, std::vector ou std::list. No entanto, o std::stack em si não é iterável, o que significa que não é possível percorrê-lo usando loops for ou while como faria com outros contêineres da STL.
+O std::stack é uma estrutura de dados que fornece uma interface de pilha (LIFO - Last In, First Out, ou seja o último elemento inserido na pilha é o primeiro a ser removido, e o primeiro elemento a ser adicionado à pilha será o último a ser removido) sobre outro contêiner subjacente da STL, geralmente um std::deque, std::vector ou std::list. **_No entanto, o std::stack em si não é iterável, o que significa que não é possível percorrê-lo usando loops for ou while como faria com outros contêineres da STL_**.
 
-Para corrigir essa limitação, foi criada uma classe chamada MutantStack, que herda de std::stack, e adiciona a funcionalidade de iteradores. Os iteradores permitem percorrer os elementos da pilha de forma sequencial, semelhante a como percorreriamos os elementos de uma lista ou vetor.
+<b>*Para corrigir essa limitação, foi criada uma classe chamada MutantStack, que herda de std::stack, e adiciona a funcionalidade de iteradores. Os iteradores permitem percorrer os elementos da pilha de forma sequencial, semelhante a como percorreriamos os elementos de uma lista ou vetor.</b>
 
 
