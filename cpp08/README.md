@@ -58,9 +58,12 @@ Neste exercício escrevi uma classe chamada **Span** que pode armazenar um máxi
 
 De forma geral, a classe Span armazenara os números e fornecera métodos para calcular o menor e o maior intervalo entre esses números, além de permitir adicionar números de forma eficiente utilizando um intervalo de iteradores.
 
+#### Exercício 02: Mutated abomination
+Diretorio: _**ex02**_</br></br>
+Neste exercício escrevi uma classe chamada MutantStack que estende a funcionalidade do contêiner std::stack fornecendo iteradores, tornando-o iterável.
 
+O std::stack é uma estrutura de dados que fornece uma interface de pilha (LIFO - Last In, First Out) sobre outro contêiner subjacente da STL, geralmente um std::deque, std::vector ou std::list. No entanto, o std::stack em si não é iterável, o que significa que não é possível percorrê-lo usando loops for ou while como faria com outros contêineres da STL.
 
-
-
+Para corrigir essa limitação, foi criada uma classe chamada MutantStack, que herda de std::stack, e adiciona a funcionalidade de iteradores. Os iteradores permitem percorrer os elementos da pilha de forma sequencial, semelhante a como percorreriamos os elementos de uma lista ou vetor.
 
 
