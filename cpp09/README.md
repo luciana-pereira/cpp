@@ -3,7 +3,7 @@
 # Modulo 09
 Neste módulo do CPP08 da versão 2 do pdf, implementamos 3 programas divididos em 3 exercícios que podemos utilizar o STL:
 
-**STL(Standard Template Library)**
+**STL(Standard Template Library)**</br>
 <b>*O STL, abreviação de "Standard Template Library" (Biblioteca Padrão de Modelos)</b>, é uma parte fundamental da biblioteca padrão do C++. Ele fornece um conjunto de classes e funções que implementam estruturas de dados e algoritmos comuns de forma genérica, ou seja, independentes do tipo de dado.
 
 O STL é composto por três componentes principais:
