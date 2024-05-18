@@ -19,7 +19,7 @@ O STL é composto por três componentes principais:
 #### Exercício 00: Bitcoin Exchange
 Diretorio: _**ex00**_</br></br>
 
-Neste exercício escrevi um programa chamado "btc" que recebe como entrada um arquivo contendo datas e valores associados a essas datas. O programa calcula o valor de uma certa quantidade de bitcoins em uma determinada data, usando um banco de dados em formato CSV que representa o preço do bitcoin ao longo do tempo. O programa respeita várias regras, como o formato das datas e valores, lida com possíveis erros e usar pelo menos um contêiner no código.
+Neste exercício escrevi um programa chamado "btc" que recebe como entrada um arquivo contendo datas e valores associados a essas datas. O programa calcula o valor de uma certa quantidade de bitcoins em uma determinada data, usando um banco de dados em formato CSV chamado data.csv, que representa o preço do bitcoin ao longo do tempo. O programa respeita várias regras, como o formato das datas e valores, lida com possíveis erros e usar pelo menos um contêiner no código.
 
 Ele traz como resultado o valor multiplicado pela taxa de câmbio de acordo com a data indicada no banco de dados. Se a data usada na entrada não existir no banco de dados, o programa deve usa a data mais próxima contida no banco de dados (a data mais baixa). O programa lidar com vários casos de erro, como não ser possível abrir o arquivo de entrada, valores não positivos, datas inválidas e números muito grandes.
 
