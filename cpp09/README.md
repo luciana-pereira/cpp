@@ -21,6 +21,20 @@ Diretorio: _**ex00**_</br></br>
 
 Neste exercício escrevi um programa chamado "btc" que recebe como entrada um arquivo contendo datas e valores associados a essas datas. O programa calcula o valor de uma certa quantidade de bitcoins em uma determinada data, usando um banco de dados em formato CSV chamado data.csv, que representa o preço do bitcoin ao longo do tempo. O programa respeita várias regras, como o formato das datas e valores, lida com possíveis erros e usar pelo menos um contêiner no código.
 
-Ele traz como resultado o valor multiplicado pela taxa de câmbio de acordo com a data indicada no banco de dados. Se a data usada na entrada não existir no banco de dados, o programa deve usa a data mais próxima contida no banco de dados (a data mais baixa). O programa lidar com vários casos de erro, como não ser possível abrir o arquivo de entrada, valores não positivos, datas inválidas e números muito grandes.
+_**Ele traz como resultado o valor multiplicado pela taxa de câmbio de acordo com a data indicada no banco de dados (data.csv). Se a data usada na entrada não existir no banco de dados, o programa deve usa a data mais próxima contida no banco de dados (a data mais baixa)**_. O programa lidar com vários casos de erro, como não ser possível abrir o arquivo de entrada, valores não positivos, datas inválidas e números muito grandes.
 
-De forma geral, com este exercicio pude,  realizar a manipulação de arquivos, processamento de dados em formato CSV, manipulação de datas, tratamento de erros e uso de contêineres em C++98.
+De forma geral, com este exercicio pude,  realizar a manipulação de arquivos, processamento de dados em formato CSV, manipulação de datas, tratamento de erros e uso de contêinere map em C++98.
+
+- Executando o programa
+```
+./btc input.csv
+```
+
+#### Exercício 01:  Reverse Polish Notation
+Diretorio: _**ex01**_</br></br>
+
+Neste exercício escrevi um programa que avalia expressões matemáticas em RPN. Esse tipo de notação é uma maneira de escrever expressões matemáticas em que os operadores seguem seus operandos, o que elimina a necessidade de parênteses para determinar a ordem das operações.
+
+Este programa recebe como argumento uma expressão matemática em notação polonesa reversa. Os números utilizados na expressão devem sempre ser menores que 10. Esta restrição se aplica aos números invidualmente na expressão, mas o calculo e o resultado final não precisão respeitar esta regra.
+
+O programa realiza operações com +, -, /, * e utiliza container e não precisa lidar com parênteses  ou número decimal.
