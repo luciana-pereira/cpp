@@ -76,6 +76,7 @@ O T no exemplo acima é um parâmetro de tipo genérico.
 Os exercicios do _**módulo 08 da versão 8**_ contem a implementação de programas que lidam com **"templated containers**, **iterators** e **algorithms**.
 
 - #### [Modulo 09](https://github.com/luciana-pereira/cpp/tree/master/cpp09)
+Os exercicios do _**módulo 09 da versão 2**_ contem a implementação de programas que lidam com a **Biblioteca de Templates Padrão (STL - Standard Template Library)**, onde poderemos utilizar dos containers, algoritmos e iteradores.
 
 **⚠️​ Para saber mais sobre o exercicio e sua implementação clique no módulo!**
 
