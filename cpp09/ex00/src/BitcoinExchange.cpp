@@ -6,200 +6,258 @@
 /*   By: lucperei <lucperei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 03:12:17 by lucperei          #+#    #+#             */
-/*   Updated: 2024/05/18 07:28:43 by lucperei         ###   ########.fr       */
+/*   Updated: 2024/05/22 19:34:29 by lucperei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/BitcoinExchange.hpp"
 
-// Construtor padrão que inicializa _exchangeRates como NULL.
+#include "../include/BitcoinExchange.hpp"
+
+// Construtor padrão: inicializa _exchangeRates como NULL
 BitcoinExchange::BitcoinExchange(void) : _exchangeRates(NULL) {}
 
-// Construtor de cópia que inicializa _exchangeRates como uma nova cópia do mapa de taxas de câmbio do objeto original.
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) 
-    : _exchangeRates(new std::map<std::string, double>(*other._exchangeRates)) {}
+// Construtor de cópia: inicializa _exchangeRates com uma nova cópia do map de other
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
+	: _exchangeRates(new std::map<std::string, double>(*other._exchangeRates)) {}
 
-// Construtor que inicializa _exchangeRates e chama readFile para processar um arquivo CSV.
-BitcoinExchange::BitcoinExchange(const std::string& filename) 
-    : _exchangeRates(new std::map<std::string, double>()) {
-    readFile(filename.c_str(), true);  // Chama a função para ler o arquivo.
+// Construtor com filename: inicializa _exchangeRates com um novo map e lê os dados do arquivo
+BitcoinExchange::BitcoinExchange(const std::string& filename)
+	: _exchangeRates(new std::map<std::string, double>()) {
+	readFile(filename.c_str(), true);
 }
 
-// Destrutor que libera a memória alocada para _exchangeRates.
+// Destrutor: deleta _exchangeRates
 BitcoinExchange::~BitcoinExchange(void) {
-    delete _exchangeRates;
+	delete _exchangeRates;
 }
 
-// Sobrecarga do operador de atribuição que copia as taxas de câmbio de um outro objeto BitcoinExchange.
+// Operador de atribuição: copia os dados de other para o objeto atual
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
-  // verifica se o objeto ao qual o operador de atribuição está sendo aplicado não é o mesmo objeto que 
-  // está sendo passado como argumento para o operador de atribuição
-    if (this != &other) {
-        delete _exchangeRates;  // Libera a memória atual.
-        _exchangeRates = new std::map<std::string, double>(*other._exchangeRates);  // Copia o mapa.
-    }
-    return *this;
+	if (this != &other) {  // Verifica se não está atribuindo para si mesmo
+		delete _exchangeRates;  // Deleta o map existente
+		_exchangeRates = new std::map<std::string, double>(*other._exchangeRates);  // Cria um novo map copiando o de other
+	}
+	return (*this);  // Retorna a referência para o objeto atual
 }
 
-// Obtém a taxa de câmbio para uma data específica.
+// Obtém a taxa de câmbio para uma data específica
 double BitcoinExchange::getExchangeRate(const std::string& date) const {
-    if (!_exchangeRates || _exchangeRates->empty()) {
-        throw std::exception();  // Lança exceção se _exchangeRates estiver vazio ou não inicializado.
-    }
-  
-  // lower_bound procura pelo primeiro elemento cuja chave "date" é maior ou igual
-    std::map<std::string, double>::const_iterator it = _exchangeRates->lower_bound(date);
+	if (!_exchangeRates || _exchangeRates->empty()) {  // Verifica se _exchangeRates é nulo ou está vazio
+		throw std::exception();  // Lança uma exceção
+	}
 
-    if (it == _exchangeRates->end()) {
-        return (--it)->second;  // Retorna a última taxa se a data for maior que todas as datas no mapa.
-    }
+	// Encontra a primeira data não menor que a data fornecida
+	std::map<std::string, double>::const_iterator it = _exchangeRates->lower_bound(date);
 
-    if (it->first == date) {
-        return it->second;  // Retorna a taxa exata se a data coincidir.
-    }
+	if (it == _exchangeRates->end()) {  // Se a data fornecida é maior que todas as datas no map
+		return (--it)->second;  // Retorna a última taxa de câmbio no map
+	}
 
-    if (it == _exchangeRates->begin()) {
-        throw std::exception();  // Lança exceção se a data for anterior a todas as datas no mapa.
-    }
+	if (it->first == date) {  // Se a data encontrada é exatamente a data fornecida
+		return it->second;  // Retorna a taxa de câmbio correspondente
+	}
 
-    return (--it)->second;  // Retorna a taxa mais próxima anterior à data fornecida.
+	if (it == _exchangeRates->begin()) {  // Se a data fornecida é menor que todas as datas no map
+		return it->second;  // Retorna a primeira taxa de câmbio no map
+	}
+
+	return (--it)->second;  // Retorna a taxa de câmbio da data anterior à data fornecida
 }
 
-// Define novas taxas de câmbio substituindo o mapa existente.
+// Define as taxas de câmbio com um novo map
 void BitcoinExchange::setExchangeRates(std::map<std::string, double>& newExchangeRates) {
-    delete _exchangeRates;
-    _exchangeRates = new std::map<std::string, double>(newExchangeRates);
+	delete _exchangeRates;  // Deleta o map existente
+	_exchangeRates = new std::map<std::string, double>(newExchangeRates);  // Cria um novo map com os novos dados
 }
 
-// Analisa uma string e a converte em um double, garantindo que é um número válido e positivo.
+// Converte uma string para double e valida
 double BitcoinExchange::parseDouble(const std::string& numberString) {
-      // Cria um objeto stringstream inicializado com numberString
-    std::stringstream stringStream(numberString);
-    double parsedValue;
-// Tenta ler um valor double do fluxo
-    stringStream >> parsedValue;
-  
-    // Verifica se a leitura falhou ou se restaram caracteres não processados
-    if (stringStream.fail() || !stringStream.eof())
-        throw std::domain_error("bad input => " + numberString);
-  
-    // Verifica se o valor lido é negativo
-    if (parsedValue < 0)
-        throw std::domain_error("not a positive number.");
-    // Retorna o valor double lido
-    return parsedValue;
+	std::stringstream stringStream(numberString);  // Cria um stringstream com a string fornecida
+	double parsedValue;
+
+	stringStream >> parsedValue;  // Tenta converter a string para double
+
+	if (stringStream.fail() || !stringStream.eof()) {  // Verifica se a conversão falhou ou se há caracteres não processados
+		throw std::domain_error("bad input => " + numberString);  // Lança uma exceção com uma mensagem de erro
+	}
+
+	if (parsedValue < 0) {  // Verifica se o valor convertido é negativo
+		throw std::domain_error("not a positive number.");  // Lança uma exceção
+	}
+
+	return (parsedValue);  // Retorna o valor convertido
 }
 
-// Valida e converte uma string de data no formato YYYY-MM-DD.
+// Valida e analisa uma string de data
 std::string BitcoinExchange::parseAndValidateDate(const std::string& dateString) {
-    std::tm timeStruct; // Criando uma instancia para armazenar informações de data
+	std::stringstream ss(dateString);  // Cria um stringstream com a string fornecida
+	int year;
+	int month;
+	int day;
+	char delimiter1, delimiter2;
 
-  // Verifica o formato da data se e valida
-    if (!strptime(dateString.c_str(), "%Y-%m-%d", &timeStruct) || !isDateValid(timeStruct))
-        throw std::domain_error("bad input => " + dateString);
+	ss >> year >> delimiter1 >> month >> delimiter2 >> day;  // Tenta extrair ano, delimitador, mês, delimitador e dia
+	if (ss.fail() || !ss.eof() || delimiter1 != '-' || delimiter2 != '-' || !isDateValid(dateString)) {
+		// Verifica se a extração falhou, se há caracteres não processados,
+		// se os delimitadores estão corretos e se a data é válida
+		throw std::domain_error("bad input => " + dateString);  // Lança uma exceção com uma mensagem de erro
+	}
 
-    return (dateString); // retorna adata se estiver ok.
+	return (dateString);  // Retorna a data validada
 }
 
-// Analisa e valida uma linha de entrada, retornando uma data e um valor de bitcoin.
+// Analisa e valida uma linha de entrada
 std::pair<std::string, double> BitcoinExchange::parseAndValidateInput(const std::string& inputLine) {
-    // Extrai data e valor
-    std::string date = parseAndValidateDate(inputLine.substr(0, 10));
-    double bitcoinValue = parseDouble(inputLine.substr(13));
+	std::string date;
+	std::string validValue;
+	double bitcoinValue;
 
-    if (bitcoinValue > 1000)
-        throw std::domain_error("too large a number.");
+	if (inputLine.length() < 14) {  // Verifica se a linha de entrada é muito curta
+		throw std::domain_error("bad input => " + inputLine);  // Lança uma exceção com uma mensagem de erro
+	}
+	
+	date = parseAndValidateDate(inputLine.substr(0, inputLine.find('|') - 1));  // Extrai e valida a data
+	bitcoinValue = parseDouble(inputLine.substr(date.size() + 2));  // Extrai e converte o valor de bitcoin
+	validValue = inputLine.substr(date.size() + 2);  // Extrai o valor de bitcoin como string
 
-    return std::pair<std::string, double>(date, bitcoinValue);
+	if (validValue.find('-') != std::string::npos) {  // Verifica se o valor contém um sinal de negativo
+		throw std::domain_error("not a positive number.");  // Lança uma exceção
+	}
+
+	if (bitcoinValue > 1000) {  // Verifica se o valor de bitcoin é muito grande
+		throw std::domain_error("too large a number.");  // Lança uma exceção
+	}
+
+	return std::pair<std::string, double>(date, bitcoinValue);  // Retorna a data e o valor de bitcoin como um par
 }
 
-// Analisa e valida uma linha de um arquivo CSV do data.csv, retornando uma data e um valor de bitcoin.
+// Analisa e valida uma linha de entrada CSV
 std::pair<std::string, double> BitcoinExchange::parseAndValidateCsv(const std::string& inputLine) {
-    double bitcoinValue;
-    std::string dateString;
-    // Verificar formatação
-    if (inputLine.size() < 12 || inputLine[10] != ',') {
-        throw std::domain_error("bad input => " + inputLine);
-    }
-    // Extrai o valor e data do arquivo
-    bitcoinValue = parseDouble(inputLine.substr(11));
-    dateString = parseAndValidateDate(inputLine.substr(0, 10));
+	double bitcoinValue;
+	std::string dateString;
 
-    return std::pair<std::string, double>(dateString, bitcoinValue);
+	if (inputLine.size() < 12 || inputLine[10] != ',') {  // Verifica se a linha é muito curta ou se o formato está incorreto
+		throw std::domain_error("bad input => " + inputLine);  // Lança uma exceção com uma mensagem de erro
+	}
+
+	dateString = parseAndValidateDate(inputLine.substr(0, inputLine.find(',')));  // Extrai e valida a data
+	bitcoinValue = parseDouble(inputLine.substr(dateString.size() + 1));  // Extrai e converte o valor de bitcoin
+
+	return std::pair<std::string, double>(dateString, bitcoinValue);  // Retorna a data e o valor de bitcoin como um par
 }
 
-// Verifica se uma data é válida considerando anos bissextos.
-bool BitcoinExchange::isDateValid(const std::tm& timeStruct) {
-   // Quatidade dedias que contem cada mês
-    static const int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    int days = daysInMonth[timeStruct.tm_mon]; // Obtém o número de dias no mês específico.
+// Verifica se a data é válida e não é futura
+bool BitcoinExchange::isDateValid(const std::string& dateString) {
+	std::stringstream ss(dateString);  // Cria um stringstream com a string fornecida
+	std::string yearString;
+	std::string monthString;
+	std::string dayString;
+	char delimiter1;
+	char delimiter2;
+	int year;
+	int month; 
+	int day;
+	size_t pos1;
+	size_t pos2;
+	
+	// Extrai a parte do ano da string de data
+	pos1 = dateString.find('-');
+	yearString = dateString.substr(0, pos1);
+	// Extrai a parte do mês da string de data
+	pos2 = dateString.find('-', pos1 + 1);
+	monthString = dateString.substr((pos1 + 1), pos2 - pos1 - 1);
+	// Extrai a parte do dia da string de data
+	dayString = dateString.substr((pos2 + 1));
 
-    if (timeStruct.tm_mon == 1) {  // Verifica se o mês é fevereiro (índice 1).
-        int year = 1900 + timeStruct.tm_year;
-        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
-            days = 29; // Atualiza para 29 dias se for um ano bissexto.
-    }
-    return (timeStruct.tm_mday <= days); // Verifica se o dia está dentro do limite de dias do mês.
+	// Tenta extrair o ano, delimitador, mês, delimitador e dia da string
+	ss >> year >> delimiter1 >> month >> delimiter2 >> day;
+
+	// Verifica se o ano, mês e dia estão dentro dos limites válidos e se os delimitadores estão corretos
+	if (year < 0 || yearString.size() != 4 || 
+		month < 1 || month > 12 || monthString.size() != 2 ||
+		day < 1 || day > 31 || dayString.size() != 2) {
+		return false;  // Retorna false se qualquer validação falhar
+	}
+
+	// Define a quantidade de dias em cada mês
+	static const int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	int days = daysInMonth[month - 1];
+
+	// Verifica se é um ano bissexto para fevereiro
+	if (month == 2) {
+		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
+			days = 29;
+		}
+	}
+	
+	// Retorna true se o dia está dentro do limite para o mês, caso contrário false
+	return (day <= days);
 }
 
-// Lê um arquivo linha por linha e processa cada linha como CSV ou entrada padrão.
+// Lê um arquivo e processa as linhas
 void BitcoinExchange::readFile(const char* filename, bool isCsv) {
-    std::ifstream file(filename);
-    
-    if (!file || file.fail()) {
-        throw std::runtime_error(std::string("Error: could not open database file: ") + filename);
-    }
+	std::ifstream file(filename);  // Abre o arquivo
+	std::string line;
+	bool hasContent;
 
-    std::string line;
-    bool hasContent = false;
+	if (!file || file.fail()) {  // Verifica se o arquivo foi aberto corretamente
+		throw std::runtime_error(std::string("Error: could not open database file: ") + filename);  // Lança uma exceção com uma mensagem de erro
+	}
 
-    if (!std::getline(file, line)) {
-        throw std::runtime_error("The file is empty.");
-    }
+	hasContent = false;  // Inicializa a flag de conteúdo como false
 
-    while (std::getline(file, line)) {
-        hasContent = true;
-        try {
-            processLine(line, isCsv);  // Processa cada linha.
-        } catch (std::domain_error& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
-        } catch (std::exception& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
-        }
-    }
+	if (!std::getline(file, line)) {  // Verifica se o arquivo está vazio
+		throw std::runtime_error("The file is empty.");  // Lança uma exceção
+	}
 
-    if (isCsv && _exchangeRates->empty() && !hasContent) {
-        throw std::runtime_error("The database is empty after processing the file.");
-    }
+	while (std::getline(file, line)) {  // Lê cada linha do arquivo
+		hasContent = true;  // Marca que o arquivo tem conteúdo
+		try {
+			processLine(line, isCsv);  // Processa a linha atual
+		} catch (std::domain_error& e) {
+			std::cerr << "Error: " << e.what() << std::endl;  // Imprime mensagens de erro de domínio
+		} catch (std::exception& e) {
+			std::cerr << "Error: bad input => " << line << std::endl;  // Imprime mensagens de erro genéricas
+		}
+	}
+
+	if (isCsv && !_exchangeRates->empty() && !hasContent) {  // Verifica se o arquivo CSV está vazio após o processamento
+		throw std::runtime_error("The database is empty after processing the file.");  // Lança uma exceção
+	}
 }
 
-// Processa uma linha específica, analisando e inserindo os valores apropriados.
+// Processa uma linha de entrada
 void BitcoinExchange::processLine(const std::string& line, bool isCsv) {
-    std::pair<std::string, double> parsedLine = isCsv ? parseAndValidateCsv(line) : parseAndValidateInput(line);
-    
-    if (isCsv) {
-        _exchangeRates->insert(parsedLine);
-    } else {
-        double rate = getExchangeRate(parsedLine.first);
-        std::cout << parsedLine.first << " => " << parsedLine.second << " = " << parsedLine.second * rate << std::endl;
-    }
+	double rate;
+
+	// Analisa e valida a linha de entrada
+	std::pair<std::string, double> parsedLine = isCsv ? parseAndValidateCsv(line) : parseAndValidateInput(line);
+	
+	if (isCsv) {
+		_exchangeRates->insert(parsedLine);  // Insere a data e a taxa de câmbio no map
+	} else {
+		rate = getExchangeRate(parsedLine.first);  // Obtém a taxa de câmbio para a data fornecida
+		std::cout << parsedLine.first << " => " << parsedLine.second << " = " << parsedLine.second * rate << std::endl;  // Imprime a data, valor de bitcoin e a conversão
+	}
 }
 
-// Processa um arquivo de entrada que contém dados para calcular os valores em bitcoin.
+// Processa o arquivo de entrada
 void BitcoinExchange::processInput(const char* file) {
-    if (!_exchangeRates || _exchangeRates->empty()) {
-        throw std::exception();
-    }
-    readFile(file, false);
+	if (!_exchangeRates || _exchangeRates->empty()) {  // Verifica se _exchangeRates é nulo ou está vazio
+		throw std::exception();  // Lança uma exceção
+	}
+	readFile(file, false);  // Lê e processa o arquivo de entrada
 }
 
-// Função principal que executa a lógica da troca de bitcoin, lidando com exceções.
+// Função principal para executar a troca de bitcoin
 bool BitcoinExchange::runBitcoinExchange(char* argv[]) {
-    try {
-        BitcoinExchange exchange("data.csv");  // Inicializa com um arquivo CSV de dados.
-        exchange.processInput(argv[1]);  // Processa o arquivo de entrada fornecido.
-    } catch (std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return false;
-    }
-    return true;
+	try {
+		BitcoinExchange exchange("data.csv");  // Cria um objeto BitcoinExchange e lê os dados do arquivo "data.csv"
+		exchange.processInput(argv[1]);  // Processa o arquivo de entrada fornecido pelo usuário
+	} catch (std::exception& e) {
+		std::cerr << "Error: " << e.what() << std::endl;  // Imprime mensagens de erro
+		return false;  // Retorna false em caso de erro
+	}
+	return true;  // Retorna true se tudo for bem-sucedido
 }
