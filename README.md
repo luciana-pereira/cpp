@@ -2,7 +2,10 @@
 
 # CPP
 
-O CPP e constituido por módulos, listas de exercicios que vão do módulo 00 ao módulo 09 sobre conceitos clássicos de Programação Orientada a Objetos (POO).
+![image](https://github.com/luciana-pereira/cpp/assets/37550557/82ae534c-a4f4-4919-a9cc-43fb9f90f320)
+
+
+O CPP e constituido por módulos, listas de exercicios que vão do módulo 00 ao módulo 09 sobre conceitos clássicos de Programação Orientada a Objetos (POO) em C++98.
 
 - #### [Modulo 00](https://github.com/luciana-pereira/cpp/tree/master/cpp00)
 Os exercicios do módulo 00 contem a implementação de Namespaces, classes, funções de membro, fluxos stdio, listas de inicialização, static, const e alguns outros itens básicos, clique no modulo para saber mais.
